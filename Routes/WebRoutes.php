@@ -4,6 +4,7 @@ namespace Routes;
 
 use App\Middlewares\Auth;
 use App\Controllers\UsersController;
+use App\Controllers\BooksController;
 
 require_once '../vendor/autoload.php';
 
@@ -21,6 +22,11 @@ $webRoutes = [
     "/users" => [
         "GET" => [
             "controller" => UsersController::index(...),
+        ],
+    ],
+    "/books/{bookId}" => [
+        "GET" => [
+            "controller" => BooksController::getOne(...),
         ],
     ]
 ];

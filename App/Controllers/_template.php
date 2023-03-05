@@ -18,6 +18,7 @@ class templateController
             [   // data 
                 "test" => $data
             ],
+            "users" //layout
         );
     }
 }

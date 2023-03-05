@@ -13,16 +13,17 @@ class UsersController
     public static function index()
     {
 
-        $user = new User;
-        $user->username = "username123";
-        $user->save();
+        // $user = new User;
+        // $user->username = "username123";
+        // $user->save();
 
-        $users = User::get();
+        $data = User::get();
         // print_r($users);
+        // echo "here";
         return Helpers::view(
             "users",    
             [ 
-                "users" => $users
+                "users" => $data,
             ],
             "main", // layout
         );
