@@ -1,0 +1,18 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "DB\\": "DB/",
+            "Routes\\": "Routes/"
+            
+        },
+        "files": [
+            "helpers/helpers.php"
+        ]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5",
+        "bramus/router": "~1.6",
+        "illuminate/database": "^10.1"
+    }
+}
