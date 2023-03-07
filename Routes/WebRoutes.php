@@ -24,9 +24,4 @@ $webRoutes = [
             "controller" => UsersController::index(...),
         ],
     ],
-    "/books/{bookId}" => [
-        "GET" => [
-            "controller" => BooksController::getOne(...),
-        ],
-    ]
 ];
