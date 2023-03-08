@@ -3,7 +3,8 @@
         "psr-4": {
             "App\\": "App/",
             "DB\\": "DB/",
-            "Routes\\": "Routes/"
+            "Routes\\": "Routes/",
+            "Helpers\\": "Helpers/"
             
         },
         "files": [

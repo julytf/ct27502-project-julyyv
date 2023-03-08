@@ -25,8 +25,8 @@ $dotenv->load();
 require_once("../DB/connection.php");
 
 $router = new Router();
-$router->setBasePath('/');
-$router->setNamespace('\App\Controllers');
+$router->setBasePath('/public');
+$router->setNamespace('/App/Controllers');
 
 foreach ($webRoutes as $path => $methods) {
     foreach ($methods as $method => $detail) {
