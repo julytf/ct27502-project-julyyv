@@ -3,7 +3,7 @@
 namespace Routes;
 
 use Helpers\Auth;
-use App\Controllers\UsersController;
+use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 
 require_once '../vendor/autoload.php';
@@ -25,7 +25,17 @@ $webRoutes = [
             },
         ],
     ],
-    "/login" => [
+    "/admin" => [
+        "GET" => [
+            "middlewares" => [
+                Auth::is_login()
+            ],
+            "controller" => function () {
+                echo "welcome admin!";
+            },
+        ]
+    ],
+    "/admin/login" => [
         "GET" => [
             "middlewares" => [],
             "controller" => AuthController::loginView(...),
@@ -35,16 +45,10 @@ $webRoutes = [
             "controller" => AuthController::login(...),
         ],
     ],
-    "/logout" => [
+    "/admin/logout" => [
         "GET" => [
             "middlewares" => [],
             "controller" => AuthController::logout(...),
-        ],
-    ],
-    "/users" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => UsersController::index(...),
         ],
     ],
 ];

@@ -8,7 +8,7 @@ use Helpers\Auth;
 use Helpers\FlashMessage;
 use Helpers\Helpers;
 
-use App\Models\User;
+// use App\Models\User;
 use Redirect;
 
 class AuthController
@@ -21,19 +21,20 @@ class AuthController
     {
         $username = $_POST["username"] ?? null;
         $password = $_POST["password"] ?? null;
-        $user = User::where("username", $username)->first();
+        // $user = User::where("username", $username)->first();
 
-        if(!$user || $password !== $user->password) {
+
+        if( $username !== $_ENV["ADMIN_USERNAME"] || $password !== $_ENV["ADMIN_PASSWORD"] ) {
             FlashMessage::create("Tài khoản hoặc mật khẩu không hợp lệ!", "error");
-            return header('Location: /login');
+            return header('Location: /admin/login');
         }
 
-        Auth::login($user->id);
-        return header('Location: /');
+        Auth::login($_ENV["ADMIN_ID"]);
+        return header('Location: /admin');
     }
     static function logout()
     {
         Auth::logout();
-        return header('Location: /');
+        return header('Location: /admin');
     }
 }

@@ -8,14 +8,14 @@ class Auth{
     }
     static function login($id) {
         static::init();
-        $_SESSION['user'] = $id;
+        $_SESSION['admin'] = $id;
     }
     static function logout() {
         static::init();
-        unset($_SESSION['user']);
+        unset($_SESSION['admin']);
     }
     static function is_login() {
         static::init();
-        return isset($_SESSION['user']);
+        return isset($_SESSION['admin']);
     }
 }
