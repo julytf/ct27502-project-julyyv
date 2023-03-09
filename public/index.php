@@ -15,7 +15,7 @@ use Routes\webRoutes;
 
 // echo $_SERVER['REQUEST_METHOD'];
 // echo $_SERVER['REQUEST_URI'];
-// print_r(WebRouter::$routes);
+// print_r($webRoutes);
 
 // test
 
@@ -25,7 +25,7 @@ $dotenv->load();
 require_once("../DB/connection.php");
 
 $router = new Router();
-$router->setBasePath('/public');
+$router->setBasePath('/');
 $router->setNamespace('/App/Controllers');
 
 foreach ($webRoutes as $path => $methods) {
@@ -40,9 +40,10 @@ foreach ($webRoutes as $path => $methods) {
     }
 }
 
-// TODO:
 $router->set404(function () {
-    header('HTTP/1.1 404 Not Found');
+// TODO:
+    // header('HTTP/1.1 404 Not Found');
+    echo "404 roi huhu";
 });
 
 $router->run();
