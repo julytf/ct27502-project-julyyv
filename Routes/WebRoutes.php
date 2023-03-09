@@ -26,6 +26,22 @@ $webRoutes = [
             },
         ],
     ],
+    "/{comic_slug}" => [
+        "GET" => [
+            "middlewares" => [],
+            "controller" => function () {
+                echo "comic info!";
+            },
+        ],
+    ],
+    "/{comic_slug}/{chap_id}" => [
+        "GET" => [
+            "middlewares" => [],
+            "controller" => function () {
+                echo "comic chap";
+            },
+        ],
+    ],
     "/admin" => [
         "GET" => [
             "middlewares" => [
@@ -52,4 +68,22 @@ $webRoutes = [
             "controller" => AuthController::logout(...),
         ],
     ],
+    "/comics" => [
+        "GET" => [
+            "middlewares" => [],
+            "controller" => function() {},
+        ],
+        "POST" => [
+            "middlewares" => [],
+            "controller" => function() {},
+        ],
+        // "PATCH" => [
+        //     "middlewares" => [],
+        //     "controller" => function() {},
+        // ],
+        "DELETE" => [
+            "middlewares" => [],
+            "controller" => function() {},
+        ],
+    ]
 ];
