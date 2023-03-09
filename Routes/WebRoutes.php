@@ -2,6 +2,7 @@
 
 namespace Routes;
 
+use App\Middlewares\AuthMiddleware;
 use Helpers\Auth;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
@@ -13,7 +14,7 @@ $webRoutes = [
         "GET" => [
             "middlewares" => [],
             "controller" => function () {
-                echo Auth::is_login() ? "true" : "false";
+                echo Auth::is_logged_in() ? "true" : "false";
             },
         ],
     ],
@@ -28,7 +29,7 @@ $webRoutes = [
     "/admin" => [
         "GET" => [
             "middlewares" => [
-                Auth::is_login()
+                AuthMiddleware::class,
             ],
             "controller" => function () {
                 echo "welcome admin!";

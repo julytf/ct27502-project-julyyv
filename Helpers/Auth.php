@@ -2,20 +2,25 @@
 
 namespace Helpers;
 
-class Auth{
-    static function init() {
+class Auth
+{
+    static function init()
+    {
         session_start();
     }
-    static function login($id) {
+    static function login()
+    {
         static::init();
-        $_SESSION['admin'] = $id;
+        $_SESSION['is_logged_in'] = TRUE;
     }
-    static function logout() {
+    static function logout()
+    {
         static::init();
-        unset($_SESSION['admin']);
+        unset($_SESSION['is_logged_in']);
     }
-    static function is_login() {
+    static function is_logged_in()
+    {
         static::init();
-        return isset($_SESSION['admin']);
+        return isset($_SESSION['is_logged_in']);
     }
 }

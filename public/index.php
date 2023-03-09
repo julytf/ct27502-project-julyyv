@@ -32,7 +32,7 @@ foreach ($webRoutes as $path => $methods) {
     foreach ($methods as $method => $detail) {
         $middlewares = $detail["middlewares"] ?? [];
         foreach ($middlewares as $middleware) {
-            $router->before($method, $path,$middleware);
+            $router->before($method, $path,$middleware::handler(...));
         }
 
         $controller = $detail["controller"];
