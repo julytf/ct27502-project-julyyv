@@ -2,43 +2,52 @@
 
 class Auth
 {
-    static function init()
+    function __construct()
     {
         session_start();
     }
     static function login()
     {
-        static::init();
         $_SESSION['is_logged_in'] = TRUE;
     }
     static function logout()
     {
-        static::init();
         unset($_SESSION['is_logged_in']);
     }
     static function is_logged_in()
     {
-        static::init();
         return isset($_SESSION['is_logged_in']);
     }
 }
 
-class FlashMessage{
-    private static function init() {
+function auth()
+{
+    return new Auth;
+}
+
+class FlashMessage
+{
+    function __construct()
+    {
         session_start();
         $_SESSION['flash_message'] ??= [];
     }
-    static function create($message, $type = "success") {
-        static::init();
+    static function create($message, $type = "success")
+    {
         $_SESSION['flash_message'][$type][] = $message;
     }
-    static function get($type = "success") {
-        static::init();
+    static function get($type = "success")
+    {
         return $_SESSION['flash_message'][$type] || [];
     }
-    static function clear($type = "success") {
+    static function clear($type = "success")
+    {
         unset($_SESSION['flash_message'][$type]);
     }
+}
+
+function flash_message() {
+    return new FlashMessage;
 }
 
 function view($view, $data = [], $layout = null)
@@ -54,7 +63,8 @@ function view($view, $data = [], $layout = null)
     }
 }
 
-function redirect($location) {
-    header('Location: '. $location);
+function redirect($location)
+{
+    header('Location: ' . $location);
     exit();
 }

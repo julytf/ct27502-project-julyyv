@@ -13,7 +13,7 @@ $webRoutes = [
         "GET" => [
             "middlewares" => [],
             "controller" => function () {
-                echo Auth::is_logged_in() ? "true" : "false";
+                echo auth()->is_logged_in() ? "true" : "false";
             },
         ],
     ],

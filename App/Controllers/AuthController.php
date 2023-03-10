@@ -16,16 +16,16 @@ class AuthController
         $password = $_POST["password"] ?? null;
 
         if( $username !== $_ENV["ADMIN_USERNAME"] || $password !== $_ENV["ADMIN_PASSWORD"] ) {
-            FlashMessage::create("Tài khoản hoặc mật khẩu không hợp lệ!", "error");
+            flash_message()->create("Tài khoản hoặc mật khẩu không hợp lệ!", "error");
             return header('Location: /admin/login');
         }
 
-        Auth::login();
+        auth()->login();
         return header('Location: /admin');
     }
     static function logout()
     {
-        Auth::logout();
+        auth()->logout();
         return header('Location: /admin/login');
     }
 }
