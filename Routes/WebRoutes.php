@@ -26,22 +26,6 @@ $webRoutes = [
             },
         ],
     ],
-    "/{comic_slug}" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () {
-                echo "comic info!";
-            },
-        ],
-    ],
-    "/{comic_slug}/{chap_id}" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () {
-                echo "comic chap";
-            },
-        ],
-    ],
     "/admin" => [
         "GET" => [
             "middlewares" => [
@@ -71,11 +55,11 @@ $webRoutes = [
     "/comics" => [
         "GET" => [
             "middlewares" => [],
-            "controller" => function() {},
+            "controller" => function () { },
         ],
         "POST" => [
             "middlewares" => [],
-            "controller" => function() {},
+            "controller" => function () { },
         ],
         // "PATCH" => [
         //     "middlewares" => [],
@@ -83,7 +67,23 @@ $webRoutes = [
         // ],
         "DELETE" => [
             "middlewares" => [],
-            "controller" => function() {},
+            "controller" => function () { },
         ],
-    ]
+    ],
+    "/{comic_slug}" => [
+        "GET" => [
+            "middlewares" => [],
+            "controller" => function () {
+                echo "comic info!";
+            },
+        ],
+    ],
+    "/{comic_slug}/{chap_id}" => [
+        "GET" => [
+            "middlewares" => [],
+            "controller" => function () {
+                echo "comic chap";
+            },
+        ],
+    ],
 ];
