@@ -27,7 +27,6 @@ class FlashMessage{
     private static function init() {
         session_start();
         $_SESSION['flash_message'] ??= [];
-
     }
     static function create($message, $type = "success") {
         static::init();
@@ -36,6 +35,9 @@ class FlashMessage{
     static function get($type = "success") {
         static::init();
         return $_SESSION['flash_message'][$type] || [];
+    }
+    static function clear($type = "success") {
+        unset($_SESSION['flash_message'][$type]);
     }
 }
 
