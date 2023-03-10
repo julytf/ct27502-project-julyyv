@@ -4,6 +4,8 @@ namespace Index;
 
 require_once '../vendor/autoload.php';
 
+require_once '../Helpers/helpers.php';
+
 use Dotenv\Dotenv;
 use Bramus\Router\Router;
 use App\Controllers\UsersController;

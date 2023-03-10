@@ -3,7 +3,6 @@
 namespace Routes;
 
 use App\Middlewares\AuthMiddleware;
-use Helpers\Auth;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 

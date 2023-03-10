@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
-use Helpers\Helpers;
 use App\Models\Comic;
 
 class ComicsController
@@ -15,7 +14,7 @@ class ComicsController
         // die($data);
         // print_r($users);
         // echo "here";
-        return Helpers::view(
+        return view(
             "comics",
             [
                 "comics" => $data,

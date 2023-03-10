@@ -2,8 +2,6 @@
 
 namespace App\Middlewares;
 
-use Helpers\Auth;
-
 class AuthMiddleware
 {
     static function handler()

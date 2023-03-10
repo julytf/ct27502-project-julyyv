@@ -4,15 +4,11 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
-use Helpers\Auth;
-use Helpers\FlashMessage;
-use Helpers\Helpers;
-
 class AuthController
 {
     static function loginView()
     {
-        return Helpers::view("login");
+        return view("login");
     }
     static function login()
     {
