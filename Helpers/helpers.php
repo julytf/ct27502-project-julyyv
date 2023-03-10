@@ -2,10 +2,19 @@
 
 class Auth
 {
+    static $instance;
     function __construct()
     {
         session_start();
     }
+    static function get_instance()
+    {
+        if(!static::$instance) {
+            static::$instance = new Auth;
+        }
+        return static::$instance;
+    }
+
     static function login()
     {
         $_SESSION['is_logged_in'] = TRUE;
@@ -22,15 +31,23 @@ class Auth
 
 function auth()
 {
-    return new Auth;
+    return Auth::get_instance();
 }
 
 class FlashMessage
 {
+    static $instance;
     function __construct()
     {
         session_start();
         $_SESSION['flash_message'] ??= [];
+    }
+    static function get_instance()
+    {
+        if(!static::$instance) {
+            static::$instance = new FlashMessage;
+        }
+        return static::$instance;
     }
     static function create($message, $type = "success")
     {
@@ -47,7 +64,7 @@ class FlashMessage
 }
 
 function flash_message() {
-    return new FlashMessage;
+    return FlashMessage::get_instance();
 }
 
 function view($view, $data = [], $layout = null)
