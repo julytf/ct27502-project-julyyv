@@ -55,7 +55,7 @@ class FlashMessage
     }
     static function get($type = "success")
     {
-        return $_SESSION['flash_message'][$type] || [];
+        return $_SESSION['flash_message'][$type] ?? [];
     }
     static function clear($type = "success")
     {
