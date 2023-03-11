@@ -3,10 +3,6 @@
 class Auth
 {
     static $instance;
-    function __construct()
-    {
-        session_start();
-    }
     static function get_instance()
     {
         if(!static::$instance) {
@@ -39,7 +35,6 @@ class FlashMessage
     static $instance;
     function __construct()
     {
-        session_start();
         $_SESSION['flash_message'] ??= [];
     }
     static function get_instance()
@@ -51,7 +46,7 @@ class FlashMessage
     }
     static function create($message, $type = "success")
     {
-        $_SESSION['flash_message'][$type][] = $message;
+        $_SESSION['flash_message'][$type] = $message;
     }
     static function get($type = "success")
     {
@@ -60,6 +55,9 @@ class FlashMessage
     static function clear($type = "success")
     {
         unset($_SESSION['flash_message'][$type]);
+    }
+    static function alert($message = ""){
+        return "<script type='text/javascript'>alert('". $message ."');</script>";
     }
 }
 

@@ -5,6 +5,7 @@ namespace Routes;
 use App\Middlewares\AuthMiddleware;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
+use App\Controllers\AdminController;
 
 require_once '../vendor/autoload.php';
 
@@ -30,9 +31,7 @@ $webRoutes = [
             "middlewares" => [
                 AuthMiddleware::class,
             ],
-            "controller" => function () {
-                echo "welcome admin!";
-            },
+            "controller" => AdminController::AdminView(...),
         ]
     ],
     "/admin/login" => [
