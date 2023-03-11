@@ -18,6 +18,8 @@ class AuthController
         if( $username !== $_ENV["ADMIN_USERNAME"] || $password !== $_ENV["ADMIN_PASSWORD"] ) {
             flash_message()->create("Tài khoản hoặc mật khẩu không hợp lệ!", "error");
             return header('Location: /admin/login');
+        }else{
+            flash_message()->create("Đăng nhập ADMIN thành công!", "success");
         }
 
         auth()->login();
