@@ -31,7 +31,7 @@ $webRoutes = [
             "middlewares" => [
                 AuthMiddleware::class,
             ],
-            "controller" => AdminController::AdminView(...),
+            "controller" => AdminController::index(...),
         ]
     ],
     "/admin/login" => [
@@ -48,6 +48,58 @@ $webRoutes = [
         "GET" => [
             "middlewares" => [],
             "controller" => AuthController::logout(...),
+        ],
+    ],
+    "/admin/comics" => [
+        "GET" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::index(...),
+        ]
+    ],
+    "/admin/comics" => [
+        "POST" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::create(...),
+        ],
+    ],
+    "/admin/comics/create" => [
+        "POST" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::createView(...),
+        ],
+    ],
+    "/admin/comics/{comic_id}" => [
+        "GET" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::getOne(...),
+        ],
+        "PATCH" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::update(...),
+        ],
+        "DELELTE" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::delete(...),
+        ],
+    ],
+    "/admin/comics/{comic_id}/edit" => [
+        "GET" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::updateView(...),
         ],
     ],
     "/comics" => [
@@ -68,7 +120,7 @@ $webRoutes = [
             "controller" => function () { },
         ],
     ],
-    "/{comic_slug}" => [
+    "/{comic_id}" => [
         "GET" => [
             "middlewares" => [],
             "controller" => function () {
