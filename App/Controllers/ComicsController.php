@@ -12,7 +12,7 @@ class ComicsController
     {
         $data = Comic::get();
         return view(
-            "index.comics",
+            "comics/index",
             [
                 "comics" => $data,
             ],
@@ -23,7 +23,7 @@ class ComicsController
     {
         $data = Comic::get();
         return view(
-            "comics",
+            "comics/index",
             [
                 "comics" => $data,
             ],

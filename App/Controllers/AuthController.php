@@ -8,7 +8,7 @@ class AuthController
 {
     static function loginView()
     {
-        return view("login.auth");
+        return view("auth/login");
     }
     static function login()
     {
@@ -17,17 +17,17 @@ class AuthController
 
         if( $username !== $_ENV["ADMIN_USERNAME"] || $password !== $_ENV["ADMIN_PASSWORD"] ) {
             flash_message()->create("Tài khoản hoặc mật khẩu không hợp lệ!", "error");
-            return header('Location: /admin/login');
+            return redirect('/admin/login');
         }else{
             flash_message()->create("Đăng nhập ADMIN thành công!", "success");
         }
 
         auth()->login();
-        return header('Location: /admin');
+        return redirect('/admin');
     }
     static function logout()
     {
         auth()->logout();
-        return header('Location: /admin/login');
+        return redirect('/admin/login');
     }
 }
