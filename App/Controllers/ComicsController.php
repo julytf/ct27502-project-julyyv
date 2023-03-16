@@ -11,9 +11,6 @@ class ComicsController
     public static function index()
     {
         $data = Comic::get();
-        // die($data);
-        // print_r($users);
-        // echo "here";
         return view(
             "comics",
             [
@@ -24,5 +21,26 @@ class ComicsController
     }
     public static function create()
     {
+        echo "TODO:";
+    }
+    public static function createView()
+    {
+        echo "TODO:";
+    }
+    public static function updateView()
+    {
+        echo "TODO:";
+    }
+    public static function getOne()
+    {
+        echo "TODO:";
+    }
+    public static function update()
+    {
+        echo "TODO:";
+    }
+    public static function delete()
+    {
+        echo "TODO:";
     }
 }

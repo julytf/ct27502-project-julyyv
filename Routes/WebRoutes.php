@@ -10,20 +10,18 @@ use App\Controllers\AdminController;
 require_once '../vendor/autoload.php';
 
 $webRoutes = [
-    "/test" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () {
-                echo auth()->is_logged_in() ? "true" : "false";
-            },
-        ],
-    ],
+    // "/test" => [
+    //     "GET" => [
+    //         "middlewares" => [],
+    //         "controller" => function () {
+    //             echo auth()->is_logged_in() ? "true" : "false";
+    //         },
+    //     ],
+    // ],
     "/" => [
         "GET" => [
             "middlewares" => [],
-            "controller" => function () {
-                echo "welcome!";
-            },
+            "controller" => ComicsController::index(...),
         ],
     ],
     "/admin" => [
@@ -56,22 +54,20 @@ $webRoutes = [
                 AuthMiddleware::class,
             ],
             "controller" => ComicsController::index(...),
-        ]
+        ],
     ],
-    "/admin/comics" => [
+    "/admin/comics/create" => [
+        "GET" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::createView(...),
+        ],
         "POST" => [
             "middlewares" => [
                 AuthMiddleware::class,
             ],
             "controller" => ComicsController::create(...),
-        ],
-    ],
-    "/admin/comics/create" => [
-        "POST" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::createView(...),
         ],
     ],
     "/admin/comics/{comic_id}" => [
@@ -81,18 +77,6 @@ $webRoutes = [
             ],
             "controller" => ComicsController::getOne(...),
         ],
-        "PATCH" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::update(...),
-        ],
-        "DELELTE" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::delete(...),
-        ],
     ],
     "/admin/comics/{comic_id}/edit" => [
         "GET" => [
@@ -101,30 +85,50 @@ $webRoutes = [
             ],
             "controller" => ComicsController::updateView(...),
         ],
+        "PATCH" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::update(...),
+        ],
     ],
-    "/comics" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () { },
+    "/admin/comics/{comic_id}/delete" => [
+        "DELETE" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::delete(...),
         ],
-        "POST" => [
-            "middlewares" => [],
-            "controller" => function () { },
-        ],
+    ],
+    // "/comics" => [
+        // "GET" => [
+        //     "middlewares" => [],
+        //     "controller" => function () { 
+        //         echo "TODO:";
+        //     },
+        // ],
+        // "POST" => [
+        //     "middlewares" => [],
+        //     "controller" => function () { 
+        //         echo "TODO:";
+        //     },
+        // ],
         // "PATCH" => [
         //     "middlewares" => [],
         //     "controller" => function() {},
         // ],
-        "DELETE" => [
-            "middlewares" => [],
-            "controller" => function () { },
-        ],
-    ],
+        // "DELETE" => [
+        //     "middlewares" => [],
+        //     "controller" => function () { 
+        //         echo "TODO:";
+        //     },
+        // ],
+    // ],
     "/{comic_id}" => [
         "GET" => [
             "middlewares" => [],
             "controller" => function () {
-                echo "comic info!";
+                echo "TODO: comic info!";
             },
         ],
     ],
@@ -132,7 +136,7 @@ $webRoutes = [
         "GET" => [
             "middlewares" => [],
             "controller" => function () {
-                echo "comic chap";
+                echo "TODO: comic chap";
             },
         ],
     ],

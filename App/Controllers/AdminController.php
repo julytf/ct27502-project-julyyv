@@ -6,8 +6,8 @@ require_once '../vendor/autoload.php';
 
 class AdminController
 {
-    static function adminView()
+    static function index()
     {
-        return view("admin");
+        return view("index.admin", [], "main");
     }
 }
