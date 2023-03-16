@@ -12,6 +12,17 @@ class ComicsController
     {
         $data = Comic::get();
         return view(
+            "index.comics",
+            [
+                "comics" => $data,
+            ],
+            "main", // layout
+        );
+    }
+    public static function adminIndex()
+    {
+        $data = Comic::get();
+        return view(
             "comics",
             [
                 "comics" => $data,

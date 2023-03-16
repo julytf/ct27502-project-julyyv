@@ -53,7 +53,7 @@ $webRoutes = [
             "middlewares" => [
                 AuthMiddleware::class,
             ],
-            "controller" => ComicsController::index(...),
+            "controller" => ComicsController::adminIndex(...),
         ],
     ],
     "/admin/comics/create" => [
