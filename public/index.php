@@ -4,7 +4,7 @@ namespace Index;
 
 require_once '../vendor/autoload.php';
 
-require_once '../Helpers/helpers.php';
+// require_once '../Helpers/helpers.php'; // da require bang autoload
 
 use Dotenv\Dotenv;
 use Bramus\Router\Router;
