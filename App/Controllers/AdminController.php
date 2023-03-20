@@ -8,6 +8,10 @@ class AdminController
 {
     static function index()
     {
-        return view("admin/index", [], "main");
+        return view(
+            "admin/index",
+            [],
+            "main"
+        );
     }
 }

@@ -21,7 +21,7 @@ $errors = flash_message()->get("error");
 <ul class="error">
     <?php foreach ($errors as $error): ?>
         <li>
-            <?php echo error; ?>
+            <?php echo $error; ?>
         </li>
     <?php endforeach ?>
 </ul>
