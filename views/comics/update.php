@@ -1,6 +1,6 @@
 <h1>Update Comic</h1>
-<form method="PATCH" enctype="multipart/form-data" >
-    <input type="hidden" name="method" value="PATCH">
+<form method="POST" enctype="multipart/form-data" >
+    <input type="hidden" name="_method" value="PATCH">
     <label>name: <input type="text" name="name" 
     value="<?php echo $comic['name'] ?? '' ?>"></label>
     </br>

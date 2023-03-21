@@ -25,6 +25,12 @@ use Routes\webRoutes;
 $dotenv = Dotenv::createImmutable(__DIR__.'/..');
 $dotenv->load();
 
+
+if($_SERVER['REQUEST_METHOD'] === "POST") {
+    // echo $_POST["_method"];
+    $_SERVER['REQUEST_METHOD'] = $_POST["_method"] ?? $_SERVER['REQUEST_METHOD'];
+}
+
 require_once("../DB/connection.php");
 
 $router = new Router();

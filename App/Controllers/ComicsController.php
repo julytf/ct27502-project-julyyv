@@ -98,7 +98,7 @@ class ComicsController
     }
     public static function update()
     {
-        echo "TODO:";
+        echo "TODO: update";
     }
     public static function delete()
     {
