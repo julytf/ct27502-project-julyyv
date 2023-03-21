@@ -6,6 +6,7 @@ require_once '../vendor/autoload.php';
 
 // require_once '../Helpers/helpers.php'; // da require bang autoload
 
+use App\Controllers\AssetsController;
 use Dotenv\Dotenv;
 use Bramus\Router\Router;
 use App\Controllers\UsersController;
@@ -29,6 +30,8 @@ require_once("../DB/connection.php");
 $router = new Router();
 $router->setBasePath('/');
 $router->setNamespace('/App/Controllers');
+
+$router->get("/(img|css|js)(/.*)?", AssetsController::get(...));
 
 foreach ($webRoutes as $path => $methods) {
     foreach ($methods as $method => $detail) {
