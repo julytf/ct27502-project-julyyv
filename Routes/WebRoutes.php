@@ -70,14 +70,6 @@ $webRoutes = [
             "controller" => ComicsController::create(...),
         ],
     ],
-    "/admin/comics/{comic_id}" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::getOne(...),
-        ],
-    ],
     "/admin/comics/{comic_id}/edit" => [
         "GET" => [
             "middlewares" => [
@@ -98,6 +90,14 @@ $webRoutes = [
                 AuthMiddleware::class,
             ],
             "controller" => ComicsController::delete(...),
+        ],
+    ],
+    "/admin/comics/{comic_id}" => [
+        "GET" => [
+            "middlewares" => [
+                AuthMiddleware::class,
+            ],
+            "controller" => ComicsController::getOne(...),
         ],
     ],
     // "/comics" => [

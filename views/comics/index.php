@@ -18,27 +18,22 @@
             <td><?php echo $comic['id'] ?></td>
             <td><?php echo $comic['name'] ?></td>
             <td><?php echo $comic['description'] ?></td>
-			<td><img height='100' src="<?php echo $comic['image'] ?>"></td>
-            <td><img height='100' src="<?php echo $comic['cover_image'] ?>"></td>
+			<td><img height='100' src="../../public/ <?php echo $comic['image'] ?>"></td>
+            <td><img height='100' src="../../public/ <?php echo $comic['cover_image'] ?>"></td>
             <td><?php echo $comic['status'] ?></td>
             <td><?php echo $comic['others_name'] ?></td>
             <td><?php echo $comic['country'] ?></td>
             <td><?php echo $comic['release_date'] ?></td>
 			<td>
-				<!-- <a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=decre">
-					-
+				<a href="/admin/comics/<?php echo $comic['id'] ?>/edit">
+					Edit
 				</a>
-				<?php echo $each['quantity'] ?>
-				<a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=incre">
-					+
-				</a> -->
-                Edit
 			</td>
 			
 			<td>
-				<!-- <a href="delete_from_cart.php?id=<?php echo $id ?>"> -->
-				Delete
-				<!-- </a> -->
+				<a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=decre">
+					Delete
+				</a>
 			</td>
 		</tr>
 	<?php endforeach ?>

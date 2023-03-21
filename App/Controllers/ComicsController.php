@@ -64,6 +64,8 @@ class ComicsController
             'release_date' => $release_date
         ]);
         $comic->save();
+
+        return redirect('/admin/comics');
     }
     public static function createView()
     {
@@ -75,10 +77,23 @@ class ComicsController
     }
     public static function updateView()
     {
-        echo "TODO:";
+        $url = $_SERVER['REQUEST_URI'];
+        $slugs = explode("/", $url);
+
+        // id = $slugs[3];
+        $comic = Comic::find($slugs[3]);
+
+        return view(
+            "comics/update",
+            [
+                "comic" => $comic,
+            ],
+            "main", // layout
+        );
     }
     public static function getOne()
     {
+        echo 'hello';
         echo "TODO:";
     }
     public static function update()
