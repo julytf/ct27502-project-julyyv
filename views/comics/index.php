@@ -31,9 +31,10 @@
 			</td>
 			
 			<td>
-				<a href="update_quantity_in_cart.php?id=<?php echo $id ?>&type=decre">
-					Delete
-				</a>
+				<form method="POST" action="/admin/comics/<?php echo $comic['id'] ?>/delete">
+					<input type="hidden" name="_method" value="DELETE">
+					<button>DELETE</button>
+				</form>
 			</td>
 		</tr>
 	<?php endforeach ?>

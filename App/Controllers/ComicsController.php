@@ -75,13 +75,9 @@ class ComicsController
             "main", // layout
         );
     }
-    public static function updateView()
+    public static function updateView($comic_id)
     {
-        $url = $_SERVER['REQUEST_URI'];
-        $slugs = explode("/", $url);
-
-        // id = $slugs[3];
-        $comic = Comic::find($slugs[3]);
+        $comic = Comic::find($comic_id);
 
         return view(
             "comics/update",
@@ -98,10 +94,38 @@ class ComicsController
     }
     public static function update()
     {
-        echo "TODO: update";
+        $id = $_POST["id"];
+        $name = $_POST["name"] ;
+        $description = $_POST["description"] ?? null;
+        // $image = $_FILES["image"] ;
+        // $cover_image = $_FILES["cover_image"] ?? null;
+        $status = $_POST["status"] ?? null;
+        $other_name = $_POST["other_name"] ?? null;
+        $country = $_POST["country"] ?? null;
+        $release_date = $_POST["release_date"] ?? null;
+
+        // $folder = '../public/images/comics/';
+        // $sub_folder = 'images/comics/';
+        // $path_file_image = $folder . basename($image["name"]);
+        // $path_file_cover_image = $folder . basename($cover_image["name"]);
+        // $path_store_image = $sub_folder . basename($image["name"]);
+        // $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
+
+        // move_uploaded_file($image["tmp_name"], $path_file_image);
+        // move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+
+        // chua cho update image
+
+        $comic = Comic::find($id);
+
+        $comic->fill($_POST);
+        $comic->save();
+
+        return redirect('/admin/comics');
     }
-    public static function delete()
+    public static function delete($comic_id)
     {
-        echo "TODO:";
+        Comic::find($comic_id)->delete();
+        return redirect('/admin/comics');
     }
 }

@@ -1,6 +1,7 @@
 <h1>Update Comic</h1>
 <form method="POST" enctype="multipart/form-data" >
     <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="id" value="<?php echo $comic['id'] ?>" >
     <label>name: <input type="text" name="name" 
     value="<?php echo $comic['name'] ?? '' ?>"></label>
     </br>
