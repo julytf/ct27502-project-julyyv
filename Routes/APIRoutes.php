@@ -1,9 +1,7 @@
 <?php
 
-namespace Routes;
-
 require_once '../vendor/autoload.php';
 
-use Bramus\Router\Router;
-use App\Controllers\UsersController;
-
+$router->GET('/api', function () use ($router) {
+    echo "welcome to API!";
+});

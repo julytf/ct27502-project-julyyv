@@ -7,9 +7,6 @@
             "Helpers\\": "Helpers/"
             
         },
-        "files": [
-            "helpers/helpers.php"
-        ]
     },
     "require": {
         "vlucas/phpdotenv": "^5.5",

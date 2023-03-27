@@ -1,143 +1,92 @@
 <?php
 
-namespace Routes;
+require_once '../vendor/autoload.php';
 
 use App\Middlewares\AuthMiddleware;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 
-require_once '../vendor/autoload.php';
+// $router->mount(, function() use ($router) {
 
-$webRoutes = [
-    // "/test" => [
-    //     "GET" => [
-    //         "middlewares" => [],
-    //         "controller" => function () {
-    //             echo auth()->is_logged_in() ? "true" : "false";
-    //         },
-    //     ],
-    // ],
-    "/" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => ComicsController::index(...),
-        ],
-    ],
-    "/admin" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => AdminController::index(...),
-        ]
-    ],
-    "/admin/login" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => AuthController::loginView(...),
-        ],
-        "POST" => [
-            "middlewares" => [],
-            "controller" => AuthController::login(...),
-        ],
-    ],
-    "/admin/logout" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => AuthController::logout(...),
-        ],
-    ],
-    "/admin/comics" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::adminIndex(...),
-        ],
-    ],
-    "/admin/comics/create" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::createView(...),
-        ],
-        "POST" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::create(...),
-        ],
-    ],
-    "/admin/comics/{comic_id}/edit" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::updateView(...),
-        ],
-        "PATCH" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::update(...),
-        ],
-    ],
-    "/admin/comics/{comic_id}/delete" => [
-        "DELETE" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::delete(...),
-        ],
-    ],
-    "/admin/comics/{comic_id}" => [
-        "GET" => [
-            "middlewares" => [
-                AuthMiddleware::class,
-            ],
-            "controller" => ComicsController::getOne(...),
-        ],
-    ],
-    // "/comics" => [
-        // "GET" => [
-        //     "middlewares" => [],
-        //     "controller" => function () { 
-        //         echo "TODO:";
-        //     },
-        // ],
-        // "POST" => [
-        //     "middlewares" => [],
-        //     "controller" => function () { 
-        //         echo "TODO:";
-        //     },
-        // ],
-        // "PATCH" => [
-        //     "middlewares" => [],
-        //     "controller" => function() {},
-        // ],
-        // "DELETE" => [
-        //     "middlewares" => [],
-        //     "controller" => function () { 
-        //         echo "TODO:";
-        //     },
-        // ],
-    // ],
-    "/{comic_id}" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () {
-                echo "TODO: comic info!";
-            },
-        ],
-    ],
-    "/{comic_slug}/{chap_id}" => [
-        "GET" => [
-            "middlewares" => [],
-            "controller" => function () {
-                echo "TODO: comic chap";
-            },
-        ],
-    ],
-];
+// });
+
+$router->GET(
+    "/",
+    ComicsController::index(...)
+);
+
+$router->mount('/(\d+)', function () use ($router) {
+    $router->GET('/', function ($comic_id) {
+        echo "TODO: comic info!";
+        echo $comic_id;
+    });
+    $router->GET('/(\d+)', function ($chap_id) {
+        echo "TODO: chap info!";
+        echo $chap_id;
+    });
+});
+
+$router->before('GET', '/admin.*', AuthMiddleware::handler(...));
+
+$router->mount('/admin', function () use ($router) {
+    $router->GET(
+        '/',
+        AdminController::index(...)
+    );
+    $router->mount(
+        "/login",
+        function () use ($router) {
+            $router->GET(
+                '/',
+                AuthController::loginView(...)
+            );
+            $router->POST(
+                "/",
+                AuthController::login(...)
+            );
+        }
+    );
+    $router->GET(
+        "/logout",
+        AuthController::logout(...)
+    );
+    $router->mount('/comics', function () use ($router) {
+
+        $router->GET(
+            "/",
+            ComicsController::adminIndex(...)
+        );
+        $router->mount("/(\d+)", function () use ($router) {
+
+            $router->GET(
+                "/",
+                ComicsController::getOne(...)
+            );
+            $router->mount("/edit", function () use ($router) {
+                $router->GET(
+                    "/",
+                    ComicsController::updateView(...)
+                );
+                $router->PATCH(
+                    "/",
+                    ComicsController::update(...)
+                );
+            });
+            $router->DELETE(
+                "/delete",
+                ComicsController::delete(...)
+            );
+        });
+        $router->mount('/create', function () use ($router) {
+            $router->GET(
+                "/",
+                ComicsController::createView(...)
+            );
+            $router->POST(
+                "/",
+                ComicsController::create(...)
+            );
+        });
+    });
+});

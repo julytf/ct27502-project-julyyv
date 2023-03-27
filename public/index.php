@@ -4,15 +4,12 @@ namespace Index;
 
 require_once '../vendor/autoload.php';
 
-// require_once '../Helpers/helpers.php'; // da require bang autoload
+require_once '../Helpers/helpers.php'; 
 
 use App\Controllers\AssetsController;
 use Dotenv\Dotenv;
 use Bramus\Router\Router;
 use App\Controllers\UsersController;
-
-require_once("../Routes/WebRoutes.php");
-use Routes\webRoutes;
 
 // test
 
@@ -37,20 +34,16 @@ $router = new Router();
 $router->setBasePath('/');
 $router->setNamespace('/App/Controllers');
 
+// serve static
 $router->get("/(img|css|js)(/.*)?", AssetsController::get(...));
 
-foreach ($webRoutes as $path => $methods) {
-    foreach ($methods as $method => $detail) {
-        $middlewares = $detail["middlewares"] ?? [];
-        foreach ($middlewares as $middleware) {
-            $router->before($method, $path,$middleware::handler(...));
-        }
+// web routes
+require_once('../routes/WebRoutes.php');
 
-        $controller = $detail["controller"];
-        $router->$method($path, $controller);
-    }
-}
+// api routes
+require_once('../routes/apiRoutes.php');
 
+// 404
 $router->set404(function () {
 // TODO:
     // header('HTTP/1.1 404 Not Found');

@@ -30,6 +30,19 @@ class ComicsController
             "main", // layout
         );
     }
+    public static function getOne()
+    {
+        echo 'hello';
+        echo "TODO:";
+    }
+    public static function createView()
+    {
+        return view(
+            "comics/create",
+            [],
+            "main", // layout
+        );
+    }
     public static function create()
     {
         $name = $_POST["name"] ;
@@ -67,14 +80,6 @@ class ComicsController
 
         return redirect('/admin/comics');
     }
-    public static function createView()
-    {
-        return view(
-            "comics/create",
-            [],
-            "main", // layout
-        );
-    }
     public static function updateView($comic_id)
     {
         $comic = Comic::find($comic_id);
@@ -86,11 +91,6 @@ class ComicsController
             ],
             "main", // layout
         );
-    }
-    public static function getOne()
-    {
-        echo 'hello';
-        echo "TODO:";
     }
     public static function update()
     {
