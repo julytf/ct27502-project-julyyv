@@ -45,25 +45,28 @@ class ComicsController
     }
     public static function create()
     {
-        $name = $_POST["name"] ;
+        $name = $_POST["name"];
         $description = $_POST["description"] ?? null;
-        $image = $_FILES["image"] ;
-        $cover_image = $_FILES["cover_image"] ?? null;
+        $image = $_FILES["image"];
+        $cover_image = $_FILES["cover_image"];
         $status = $_POST["status"] ?? null;
-        $other_name = $_POST["other_name"] ?? null;
+        $others_name = $_POST["others_name"] ?? null;
         $country = $_POST["country"] ?? null;
-        $release_date = $_POST["release_date"] ?? null;
+        $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
 
         $folder = '../public/images/comics/';
         $sub_folder = 'images/comics/';
+
+
         $path_file_image = $folder . basename($image["name"]);
-        $path_file_cover_image = $folder . basename($cover_image["name"]);
         $path_store_image = $sub_folder . basename($image["name"]);
-        $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
-
-
         move_uploaded_file($image["tmp_name"], $path_file_image);
-        move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+
+        if($cover_image['name'] != ''){
+            $path_file_cover_image = $folder . basename($cover_image["name"]);
+            $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
+            move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+        }
 
         $comic = new Comic;
         $comic->fill([
@@ -72,7 +75,7 @@ class ComicsController
             'image' => $path_store_image,
             'cover_image' => $path_store_cover_image,
             'status' => $status,
-            'other_name' => $other_name,
+            'others_name' => $others_name,
             'country' => $country,
             'release_date' => $release_date
         ]);
@@ -95,28 +98,45 @@ class ComicsController
     public static function update()
     {
         $id = $_POST["id"];
-        $name = $_POST["name"] ;
+        $name = $_POST["name"];
         $description = $_POST["description"] ?? null;
-        // $image = $_FILES["image"] ;
-        // $cover_image = $_FILES["cover_image"] ?? null;
+        $image = $_FILES["image"];
+        $cover_image = $_FILES["cover_image"];
         $status = $_POST["status"] ?? null;
-        $other_name = $_POST["other_name"] ?? null;
+        $others_name = $_POST["others_name"] ?? null;
         $country = $_POST["country"] ?? null;
-        $release_date = $_POST["release_date"] ?? null;
-
-        // $folder = '../public/images/comics/';
-        // $sub_folder = 'images/comics/';
-        // $path_file_image = $folder . basename($image["name"]);
-        // $path_file_cover_image = $folder . basename($cover_image["name"]);
-        // $path_store_image = $sub_folder . basename($image["name"]);
-        // $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
-
-        // move_uploaded_file($image["tmp_name"], $path_file_image);
-        // move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
-
-        // chua cho update image
+        $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
 
         $comic = Comic::find($id);
+
+        if( $image['name'] == '' && $cover_image['name'] == '' ){
+            $comic->fill([
+                'name' => $name,
+                'description' => $description,
+                'status' => $status,
+                'others_name' => $others_name,
+                'country' => $country,
+                'release_date' => $release_date
+            ]);
+            
+            $comic->save();
+            return redirect('/admin/comics');
+        }
+
+        $folder = '../public/images/comics/';
+        $sub_folder = 'images/comics/';
+
+        if($image['name'] != ''){
+            $path_file_image = $folder . basename($image["name"]);
+            $path_store_image = $sub_folder . basename($image["name"]);
+            move_uploaded_file($image["tmp_name"], $path_file_image);
+        }
+
+        if($cover_image['name'] != ''){
+            $path_file_cover_image = $folder . basename($cover_image["name"]);
+            $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
+            move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+        }
 
         $comic->fill($_POST);
         $comic->save();

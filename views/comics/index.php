@@ -18,8 +18,8 @@
             <td><?php echo $comic['id'] ?></td>
             <td><?php echo $comic['name'] ?></td>
             <td><?php echo $comic['description'] ?></td>
-			<td><img height='100' src="../../public/ <?php echo $comic['image'] ?>"></td>
-            <td><img height='100' src="../../public/ <?php echo $comic['cover_image'] ?>"></td>
+			<td><img height='100' src="/<?php echo $comic['image'] ?>"></td>
+            <td><img height='100' src="/<?php echo $comic['cover_image'] ?>"></td>
             <td><?php echo $comic['status'] ?></td>
             <td><?php echo $comic['others_name'] ?></td>
             <td><?php echo $comic['country'] ?></td>

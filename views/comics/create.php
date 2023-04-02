@@ -13,7 +13,7 @@
         <input type="radio" name="status" value="0">not complete
     </label>
     </br>
-    <label>others_name: <input type="text" name="others_name"></label>
+    <label>others_name: <input type="text" name="other_name"></label>
     </br>
     <label>country: <input type="text" name="country"></label>
     </br>
