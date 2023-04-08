@@ -11,7 +11,7 @@ class Auth
     }
     static function get_instance()
     {
-        if(!static::$instance) {
+        if (!static::$instance) {
             static::$instance = new Auth;
         }
         return static::$instance;
@@ -48,7 +48,7 @@ class FlashMessage
     }
     static function get_instance()
     {
-        if(!static::$instance) {
+        if (!static::$instance) {
             static::$instance = new FlashMessage;
         }
         return static::$instance;
@@ -69,20 +69,36 @@ class FlashMessage
     }
 }
 
-function flash_message() {
+function flash_message()
+{
     return FlashMessage::get_instance();
 }
 
 function view($view, $data = [], $layout = null)
 {
+    $view_path = null;
     if (is_file('../views/' . $view . '.php')) {
+        $view_path = '../views/' . $view . '.php';
+    } else if (is_file('../views/' . $view . '/index.php')) {
+        $view_path = '../views/' . $view . '/index.php';
+    }
+    if (isset($view_path)) {
         extract($data);
-        if (isset($layout) && is_file('../views/layouts/' . $layout . '.php')) {
-            $body = "../views/" . $view . '.php';
-            require_once('../views/layouts/' . $layout . '.php');
-        } else {
-            require_once('../views/' . $view . '.php');
+        $layout_path = null;
+        if (isset($layout)) {
+            if (is_file('../views/layouts/' . $layout . '.php')) {
+                $layout_path = '../views/layouts/' . $layout . '.php';
+            } else if (is_file('../views/layouts/' . $layout . '/index.php')) {
+                $layout_path = '../views/layouts/' . $layout . '/index.php';
+            }
         }
+        if (isset($layout_path)) {
+            $body = $view_path;
+            require_once($layout_path);
+        } else {
+            require_once($view_path);
+        }
+        return;
     }
 }
 

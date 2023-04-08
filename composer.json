@@ -5,8 +5,7 @@
             "DB\\": "DB/",
             "Routes\\": "Routes/",
             "Helpers\\": "Helpers/"
-            
-        },
+        }
     },
     "require": {
         "vlucas/phpdotenv": "^5.5",

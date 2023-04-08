@@ -35,7 +35,7 @@ $router->setBasePath('/');
 $router->setNamespace('/App/Controllers');
 
 // serve static
-$router->get("/(img|css|js)(/.*)?", AssetsController::get(...));
+$router->get("/(img|css|js|font)(/.*)?", AssetsController::get(...));
 
 // web routes
 require_once('../routes/WebRoutes.php');
