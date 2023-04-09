@@ -4,7 +4,10 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
+use App\Models\Chapter;
 use App\Models\Comic;
+use App\Models\Comic_Genre;
+use App\Models\Image;
 
 class ComicsController
 {
@@ -145,6 +148,25 @@ class ComicsController
     }
     public static function delete($comic_id)
     {
+        $comic = Comic::find($comic_id);
+        $chapter = Chapter::find($comic_id);
+        $comic_genre = Comic_Genre::where('comic_id', $comic_id)->get();
+        // foreach ($comic_genre as $genre) {
+        //     $comic_id = $genre->comic_id;
+        //     $genre_id = $genre->genre_id;
+        //     print_r($genre_id);
+        // }
+        if($chapter){
+            $image = Image::find($chapter['id']);
+            die($image);
+            if ($image){
+                $image->delete();
+            }
+            $chapter->delete();
+        }
+        if($comic_genre){
+            $comic_genre->delete();
+        }
         Comic::find($comic_id)->delete();
         return redirect('/admin/comics');
     }
