@@ -4,16 +4,14 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
-use App\Models\Chapter;
-use App\Models\Comic;
+use App\Models\Comics;
+use App\Models\Chapters;
 use App\Models\Comic_Genre;
-use App\Models\Image;
-
 class ComicsController
 {
     public static function index()
     {
-        $data = Comic::get();
+        $data = Comics::get();
         return view(
             "comics/index",
             [
@@ -24,7 +22,7 @@ class ComicsController
     }
     public static function adminIndex()
     {
-        $data = Comic::get();
+        $data = Comics::get();
         return view(
             "comics/index",
             [
@@ -51,11 +49,7 @@ class ComicsController
         $name = $_POST["name"];
         $description = $_POST["description"] ?? null;
         $image = $_FILES["image"];
-<<<<<<< Updated upstream
         $cover_image = $_FILES["cover_image"];
-=======
-        $cover_image = $_FILES["cover_image"] ?? null;
->>>>>>> Stashed changes
         $status = $_POST["status"] ?? null;
         $others_name = $_POST["others_name"] ?? null;
         $country = $_POST["country"] ?? null;
@@ -75,7 +69,7 @@ class ComicsController
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
         }
 
-        $comic = new Comic;
+        $comic = new Comics;
         $comic->fill([
             'name' => $name,
             'description' => $description,
@@ -92,7 +86,7 @@ class ComicsController
     }
     public static function updateView($comic_id)
     {
-        $comic = Comic::find($comic_id);
+        $comic = Comics::find($comic_id);
 
         return view(
             "comics/update",
@@ -114,7 +108,7 @@ class ComicsController
         $country = $_POST["country"] ?? null;
         $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
 
-        $comic = Comic::find($id);
+        $comic = Comics::find($id);
 
         if( $image['name'] == '' && $cover_image['name'] == '' ){
             $comic->fill([
@@ -152,26 +146,26 @@ class ComicsController
     }
     public static function delete($comic_id)
     {
-        $comic = Comic::find($comic_id);
-        $chapter = Chapter::find($comic_id);
-        $comic_genre = Comic_Genre::where('comic_id', $comic_id)->get();
-        // foreach ($comic_genre as $genre) {
-        //     $comic_id = $genre->comic_id;
-        //     $genre_id = $genre->genre_id;
-        //     print_r($genre_id);
-        // }
-        if($chapter){
-            $image = Image::find($chapter['id']);
-            die($image);
-            if ($image){
-                $image->delete();
+        $comic = Comics::find($comic_id);
+        $chapters = $comic->chapters()->get();
+        $comic_genre_arr = $comic->genres()->get();
+        if($chapters){
+            foreach ($chapters as $chapter) {
+                $images = $chapter->images()->get();
+                if($images){
+                    foreach ($images as $image) {
+                        $image->delete();
+                    }
+                }
+                $chapter->delete();
             }
-            $chapter->delete();
         }
-        if($comic_genre){
-            $comic_genre->delete();
+        if($comic_genre_arr){
+            foreach ($comic_genre_arr as $comic_genre) {
+                $comic_genre->pivot->delete();
+            }
         }
-        Comic::find($comic_id)->delete();
+        $comic->delete();
         return redirect('/admin/comics');
     }
 }

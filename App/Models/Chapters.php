@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Images;
 
-class Chapter extends Model 
+class Chapters extends Model 
 {
-    protected $table = 'chapter';
+    protected $table = 'chapters';
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
@@ -14,4 +15,8 @@ class Chapter extends Model
         'comic_id'
     ];
     public $timestamps = false;
+    
+    public function images(){
+        return $this->hasMany(Images::class,'chapter_id');
+    }
 }
