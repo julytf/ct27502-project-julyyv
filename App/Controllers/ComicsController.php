@@ -51,7 +51,11 @@ class ComicsController
         $name = $_POST["name"];
         $description = $_POST["description"] ?? null;
         $image = $_FILES["image"];
+<<<<<<< Updated upstream
         $cover_image = $_FILES["cover_image"];
+=======
+        $cover_image = $_FILES["cover_image"] ?? null;
+>>>>>>> Stashed changes
         $status = $_POST["status"] ?? null;
         $others_name = $_POST["others_name"] ?? null;
         $country = $_POST["country"] ?? null;

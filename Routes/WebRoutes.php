@@ -2,6 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
+use App\Controllers\HomeController;
 use App\Middlewares\AuthMiddleware;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
@@ -13,7 +14,7 @@ use App\Controllers\AdminController;
 
 $router->GET(
     "/",
-    ComicsController::index(...)
+    HomeController::index(...)
 );
 
 $router->mount('/(\d+)', function () use ($router) {

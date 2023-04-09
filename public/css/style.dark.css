@@ -1,0 +1,334 @@
+body.dark input::-webkit-input-placeholder {
+    color: #b0b3b8!important
+}
+
+body.dark {
+    background-color: #18191a;
+    color: #e4e6eb
+}
+
+body.dark header .top .top_search input,
+body.dark .content .main_content .box_chat .chat_add input {
+    background-color: #3a3b3c;
+    border-color: #3a3b3c;
+    color: #b0b3b8
+}
+body.dark .comment-container .group01 .list-comment .outline-content-comment{
+    background-color: #423e3e;
+    color: #fff;
+}
+body.dark .comment-container .group01 .list-comment .content-comment{
+    color: #fff;
+}
+
+body.dark header .bottom {
+    /* background-color: #242526 */
+}
+
+body.dark .box {
+    background-color: #242526;
+}
+body.dark .chapter-control div span {
+    color: #fff;
+}
+body.dark .detail-title, body.dark .box time {
+    color: #fff;
+}
+
+body.dark header .top {
+    background-color: #18191a
+}
+
+body.dark header .top .logo p {
+    color: #e4e6eb
+}
+
+body.dark header .top .top_search button {
+    color: #b0b3b8
+}
+
+body.dark header .top .right ul li.salary {
+    border: 1px solid #b0b3b8
+}
+
+body.dark header .top .right ul li.salary p {
+    color: #b0b3b8
+}
+
+body.dark header .top .right ul li.profile .member_profile .member_info p.name {
+    color: #e4e6eb!important;
+    -webkit-text-fill-color: inherit!important
+}
+
+body.dark .content .main_content .box_chat {
+    background-color: #242526;
+    color: #b0b3b8
+}
+
+body.dark .content .main_content button.chat_menu {
+    border: 1px solid #e4e6eb;
+    color: #e4e6eb
+}
+
+body.dark .content .main_content button.active {
+    background-color: #e4e6eb!important;
+    color: #242526!important
+}
+
+body.dark .content .main_content h2 .button_circle {
+    border: 1px solid #e4e6eb;
+    color: #e4e6eb
+}
+
+body.dark .content .main_content .box_chat ul li p a,
+body.dark .content .main_content .box_chat ul li p span {
+    color: #e4e6eb!important;
+    -webkit-text-fill-color: inherit!important
+}
+
+body.dark .content .menu_right .app {
+    background-color: #242526
+}
+
+body.dark .content .menu_right .app p {
+    color: #e4e6eb
+}
+
+body.dark .content .menu_right .app p span {
+    color: #b0b3b8
+}
+
+body.dark .content .menu_right .top ul li {
+    background-color: #242526;
+    border-color: #b0b3b8
+}
+
+body.dark .content .menu_right .top ul li .detail p.name {
+    color: #e4e6eb
+}
+
+body.dark a.link {
+    color: #e4e6eb
+}
+
+body.dark .content .menu_right .top .load_more a {
+    color: #e4e6eb
+}
+
+body.dark .content .menu_right .top h3 p {
+    background-color: transparent;
+    color: #e4e6eb
+}
+
+body.dark .content .main_content .box_chat ul li img {
+    border: none
+}
+
+body.dark .content .main_content h2 {
+    color: #e4e6eb
+}
+
+body.dark .content .main_content .homepage_tags {
+    color: #e4e6eb
+}
+
+body.dark .content .main_content .tags_detail {
+    background-color: #242526;
+    color: #b0b3b8
+}
+
+body.dark a {
+    color: #e4e6eb!important;
+    -webkit-text-fill-color: inherit!important
+}
+
+body.dark ul.list_grid.list li {
+    background-color: #242526;
+    border-color: #242526
+}
+
+body.dark .content .main_content .homepage_tags .sort button {
+    border: 1px solid #e4e6eb;
+    color: #e4e6eb
+}
+
+body.dark .content .main_content .homepage_tags .sort select {
+    border: 1px solid #e4e6eb;
+    color: #e4e6eb
+}
+
+body.dark .content .menu_right .top h3 p.active,
+body.dark .content .menu_right .top h3 p:hover {
+    border-color: #b0b3b8
+}
+
+body.dark select option {
+    color: #242526
+}
+
+body.dark header .bottom .book_tags {
+    background-color: #242526;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+
+body.dark header .bottom ul li p.tags_name:hover {
+    background-color: #18191a
+}
+
+body.dark.detail .content .main_content .book_detail {
+    background-color: #242526
+}
+
+body.dark.detail .content .main_content .book_detail .book_info .book_other p.name {
+    color: #e4e6eb
+}
+
+body.dark.detail .content .main_content .book_detail .book_info .book_other .kind p {
+    background-color: #18191a;
+    color: #b0b3b8;
+    border-color: #18191a
+}
+
+body.dark.detail .content .main_content .book_detail .book_info .book_other .book_button button {
+    background-color: #18191a!important
+}
+
+body.dark.detail .content .main_content .book_detail h3 {
+    color: #e4e6eb
+}
+
+body.dark .book_comment .comment_list li .detail a {
+    color: #e4e6eb
+}
+
+body.dark .book_comment .comment_list li .detail p span.name {
+    color: #e4e6eb!important;
+    -webkit-text-fill-color: inherit!important
+}
+
+body.dark .book_comment {
+    background-color: #242526!important
+}
+
+body.dark .book_comment h3 {
+    color: #e4e6eb
+}
+
+body.dark.detail .content .main_content .chapter_content .chapter_control {
+    background-color: #242526
+}
+
+body.dark.detail .content .main_content .book_detail .list_chapter table tr td .fee_amount {
+    color: #e4e6eb
+}
+
+body.dark header .top button.dark_mode {
+    border-color: #e4e6eb;
+    color: #e4e6eb
+}
+
+body.dark header .top button.dark_mode.active {
+    background-color: #e4e6eb;
+    color: #242526
+}
+
+body.dark header .top .right ul li.other {
+    background-color: #e4e6eb;
+    color: #242526
+}
+
+body.dark.hompage .homepage_mobile_icon ul li div div {
+    background-color: #e4e6eb;
+    color: #242526
+}
+
+body.dark.hompage .homepage_mobile_icon ul li p {
+    color: #e4e6eb
+}
+
+body.dark header .top .right ul li .hidden_div ul {
+    background-color: #3a3b3c
+}
+
+body.dark header .top_search .search_result {
+    background-color: #3a3b3c
+}
+
+body.dark header .top_search .search_result ul li {
+    border-color: #18191a
+}
+
+body.dark .community_module {
+    background-color: #242526
+}
+
+body.dark .community_module h4 {
+    color: #e4e6eb
+}
+
+body.dark footer {
+    background-color: #242526;
+    border-color: #e4e6eb
+}
+
+body.dark footer .right ul li {
+    background-color: #18191a
+}
+
+body.dark footer .left p {
+    color: #b0b3b8
+}
+
+body.dark .content .menu_right .top{
+    background-color: #242526;
+}
+
+body.dark .content .menu_right .top h3{
+    background-color: #242526;
+}
+
+body.dark .messages{
+    background-color: #252525;
+}
+
+body.dark .messages .nav-user li a{
+    color: #000 !important;
+}
+body.dark .logo a p{
+    /* background: url(../images/logo-dark.png) no-repeat; */
+    width: 146px;
+    height: 34px;
+    display: block;
+}
+
+body.dark .d-none {
+    color: #2E2E2E !important;
+}
+body.dark .popup_content a{
+    color: #2E2E2E !important;
+}
+body.dark .notify-fanpage a{
+    color: #eea236 !important;
+}
+body.dark .advsearch-form, body.dark ul.list-info li p, body.dark .notify-fanpage, body.dark .book_other h1, body.dark .breadcrumb li+li:before, body.dark .messages .title .level-left, body.dark .messages .form-change-pass .txt{
+    color: #FFF;
+}
+body.dark .content .main_content .book_detail .list_chapter {
+    border: 1px solid #FFF;
+    color: #FFF;
+}
+body.dark .list_chapter .works-chapter-item a:visited{
+    color: #eea236 !important;
+}
+body.dark .remove-history, body.dark .remove-subscribe {
+    color: #000;
+}
+body.dark .alert-note a{
+    font-weight: 600;
+    color: #f18121 !important;
+}
+body.dark .schedule-inner{
+    background-color: #242526;
+
+}
