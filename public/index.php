@@ -9,7 +9,6 @@ require_once '../Helpers/helpers.php';
 use App\Controllers\AssetsController;
 use Dotenv\Dotenv;
 use Bramus\Router\Router;
-use App\Controllers\UsersController;
 
 // test
 
@@ -41,7 +40,7 @@ $router->get("/(img|css|js|font)(/.*)?", AssetsController::get(...));
 require_once('../routes/WebRoutes.php');
 
 // api routes
-require_once('../routes/apiRoutes.php');
+require_once('../routes/ApiRoutes.php');
 
 // 404
 $router->set404(function () {

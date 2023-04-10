@@ -2254,7 +2254,7 @@ body .content .main_content h2 {
     line-height: 25px;
     padding-bottom: 10px;
 }
-body.detail .content .main_content h2 {
+body .content .main_content h2 {
     font-size: 15px;
     color: #000;
 }
@@ -2889,18 +2889,18 @@ ul.list_grid .book_info .last_chapter p:last-child {
     color: #999
 }
 
-body.detail .content .main_content {
+body .content .main_content {
     padding-bottom: 25px;
     padding-top: 10px;
 }
 
-body.detail .content .main_content .book_detail {
+body .content .main_content .book_detail {
     background-color: #fff;
     padding: 15px;
     border-radius: 5px
 }
 
-body.detail .content .main_content .book_detail h3 {
+body .content .main_content .book_detail h3 {
     color: var(--primary-color);
     font-size: 18px;
     font-weight: 400;
@@ -2910,13 +2910,13 @@ body.detail .content .main_content .book_detail h3 {
     margin-top: 10px;
 }
 
-body.detail .content .main_content .book_detail .book_control {
+body .content .main_content .book_detail .book_control {
     position: absolute;
     right: 0;
     top: 0
 }
 
-body.detail .content .main_content .book_detail .book_control button {
+body .content .main_content .book_detail .book_control button {
     background-color: #3f94d5;
     color: #fff;
     border: none;
@@ -2929,12 +2929,12 @@ body.detail .content .main_content .book_detail .book_control button {
 }
 
 
-body.detail .content .main_content .book_detail .book_info {
+body .content .main_content .book_detail .book_info {
     padding: 15px;
     position: relative
 }
 
-body.detail .content .main_content .book_detail .book_info .book_avatar {
+body .content .main_content .book_detail .book_info .book_avatar {
     height: 250px;
     overflow: hidden;
     width: 190px;
@@ -2944,18 +2944,18 @@ body.detail .content .main_content .book_detail .book_info .book_avatar {
     box-shadow: 0 0 8px 0 #757575
 }
 
-body.detail .content .main_content .book_detail .book_info .book_avatar img {
+body .content .main_content .book_detail .book_info .book_avatar img {
     height: 100%;
     width: auto
 }
 
-body.detail .content .main_content .book_detail .book_info .book_other {
+body .content .main_content .book_detail .book_info .book_other {
     width: calc(100% - 220px);
     float: right;
     text-align: left;
 }
 
-body.detail .content .main_content .book_detail .book_info .book_other p, body.detail .content .main_content .book_detail .book_info .book_other div span {
+body .content .main_content .book_detail .book_info .book_other p, body .content .main_content .book_detail .book_info .book_other div span {
     font-size: 15px;
     line-height: 30px;
     font-weight: 400;
@@ -2988,7 +2988,7 @@ ul.list-info li p {
 .col-xs-9 {
     width: 83%;
 }
-body.detail .content .main_content .book_detail .list_chapter {
+body .content .main_content .book_detail .list_chapter {
     width: 100%;
     border-radius: 5px;
     max-height: 500px;
@@ -3108,14 +3108,14 @@ body.detail .content .main_content .book_detail .list_chapter {
     font-weight: 700;
     font-size: 14px;
 }
-body.detail .content .main_content .chapter_content {
+body .content .main_content .chapter_content {
     text-align: center;
     padding-bottom: 40px;
     position: relative;
     margin-top: 20px;
 }
 
-body.detail .content .main_content .chapter_content img {
+body .content .main_content .chapter_content img {
     color: #fff;
     border-color: #000;
     border-image: initial;
@@ -3135,16 +3135,16 @@ body.detail .content .main_content .chapter_content img {
     background-color: #DDDDDD;
     cursor: not-allowed;
 }
-body.detail .content .main_content .chapter_content .page-chapter {
+body .content .main_content .chapter_content .page-chapter {
     position: relative;
     text-align: center;
 }
-body.detail .content .main_content .chapter_content img.lazy {
+body .content .main_content .chapter_content img.lazy {
     background: url(../images/loading-small.gif) center center no-repeat;
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
-body.detail .content .main_content #chapter_content h1 {
+body .content .main_content #chapter_content h1 {
     font-size: 18px;
     font-weight: 600;
     text-align: center;
@@ -3152,7 +3152,7 @@ body.detail .content .main_content #chapter_content h1 {
     padding-bottom: 10px;
 }
 
-body.detail .content .main_content .chapter_content h1 {
+body .content .main_content .chapter_content h1 {
     font-size: 20px;
     text-transform: capitalize;
     margin-bottom: 10px;
@@ -3161,7 +3161,7 @@ body.detail .content .main_content .chapter_content h1 {
     margin: 30px 0
 }
 
-body.detail .content .main_content #chapter_content h5 {
+body .content .main_content #chapter_content h5 {
     font-weight: 600;
     text-align: center;
     line-height: 80px;
@@ -3171,7 +3171,7 @@ body.detail .content .main_content #chapter_content h5 {
     margin-top: 0
 }
 
-body.detail .content .main_content .chapter_content .chapter_control {
+body .content .main_content .chapter_content .chapter_control {
     position: fixed;
     bottom: -1px;
     z-index: 1;
@@ -3198,12 +3198,12 @@ body.detail .content .main_content .chapter_content .chapter_control {
 .remove-history i, .remove-subscribe i {
     font-size: 25px;
 }
-body.detail .content .main_content .chapter_content .left {
+body .content .main_content .chapter_content .left {
     float: left;
     margin-left: 30px
 }
 
-body.detail .content .main_content .chapter_content .right {
+body .content .main_content .chapter_content .right {
     float: right;
     margin-right: 30px
 }
@@ -3218,7 +3218,7 @@ body.detail .content .main_content .chapter_content .right {
     background: #c0c0c0;
     color: #000 !important;
 }
-body.detail .content .main_content .chapter_control a.home {
+body .content .main_content .chapter_control a.home {
     font-size: 30px;
     margin-right: 15px;
     vertical-align: middle;
@@ -3229,7 +3229,7 @@ body.detail .content .main_content .chapter_control a.home {
 .changeserver {
     position: relative;
 }
-body.detail .content .main_content .chapter_control .changeserver span {
+body .content .main_content .chapter_control .changeserver span {
     position: absolute;
     font-weight: 600;
     font-size: 11px;
@@ -3257,11 +3257,11 @@ body.detail .content .main_content .chapter_control .changeserver span {
 .bottom-chap{
     margin-bottom: 15px;
 }
-body.detail .content .main_content .chapter_content .middle {
+body .content .main_content .chapter_content .middle {
     display: inline-block;
 }
 
-body.detail .content .main_content .chapter_content .chapter_control .control-button {
+body .content .main_content .chapter_content .chapter_control .control-button {
     line-height: 35px;
     height: 35px;
     width: 35px;
@@ -3273,7 +3273,7 @@ body.detail .content .main_content .chapter_content .chapter_control .control-bu
     border: none;
 }
 
-body.detail .content .main_content .chapter_content .chapter_control .prev, body.detail .content .main_content .chapter_content .chapter_control .next {
+body .content .main_content .chapter_content .chapter_control .prev, body .content .main_content .chapter_content .chapter_control .next {
     display: inline-block;
     background: #fff;
     color: #000 !important;
@@ -3283,19 +3283,19 @@ body.detail .content .main_content .chapter_content .chapter_control .prev, body
     line-height: 35px;
 }
 
-body.detail .content .main_content .chapter_content .chapter_control .disable{
+body .content .main_content .chapter_content .chapter_control .disable{
     background-color: #CCC;
     opacity: .3;
 }
-body.detail .content .main_content .chapter_content .chapter_control button.control_chapter_0 {
+body .content .main_content .chapter_content .chapter_control button.control_chapter_0 {
     display: none
 }
 
-body.detail .content .main_content .chapter_content .chapter_control button.home {
+body .content .main_content .chapter_content .chapter_control button.home {
     background-color: var(--primary-color)
 }
 
-body.detail .content .main_content .chapter_content .chapter_control select {
+body .content .main_content .chapter_content .chapter_control select {
     line-height: 35px;
     height: 35px;
     display: inline-block;
@@ -3942,10 +3942,10 @@ body.check_clone .content .list_clone h5 {
         float: none
     }
 
-    body.detail .content .main_content .chapter_content .chapter_control select {
+    body .content .main_content .chapter_content .chapter_control select {
         width: 80px
     }
-    body.detail .content .main_content .chapter_content .middle {
+    body .content .main_content .chapter_content .middle {
         width: 178px
     }
 
@@ -4008,22 +4008,22 @@ body.check_clone .content .list_clone h5 {
         margin-top: 10px;
         display: none
     }
-    body.detail .content .main_content .book_detail .book_info .book_avatar {
+    body .content .main_content .book_detail .book_info .book_avatar {
         float: none;
         margin: 0 auto;
         margin-bottom: 20px
     }
-    body.detail .content .main_content .book_detail .book_info .book_other {
+    body .content .main_content .book_detail .book_info .book_other {
         width: 100%;
         margin: 0
     }
-    body.detail .content .main_content .book_detail .book_info {
+    body .content .main_content .book_detail .book_info {
         padding: 0
     }
-    body.detail .content .main_content .book_detail .book_info .book_other p.kind {
+    body .content .main_content .book_detail .book_info .book_other p.kind {
         margin-top: 10px
     }
-    body.detail .content .main_content .book_detail .book_info .book_other p.kind span {
+    body .content .main_content .book_detail .book_info .book_other p.kind span {
         display: inline-block;
         line-height: 30px;
         margin-right: 10px;
@@ -4082,38 +4082,38 @@ body.check_clone .content .list_clone h5 {
         width: auto
     }
 
-    body.detail .content .main_content #chapter_content h1 {
+    body .content .main_content #chapter_content h1 {
         font-size: 18px;
         padding: 0 10px 10px 10px;
         line-height: 25px
     }
 
-    body.detail .content .main_content .book_detail .book_info .book_other .kind p {
+    body .content .main_content .book_detail .book_info .book_other .kind p {
         font-size: 13px
     }
-    body.detail .content .main_content .book_detail .book_info .book_other .book_button {
+    body .content .main_content .book_detail .book_info .book_other .book_button {
         margin-top: 10px;
     }
-    body.detail .content .main_content .book_detail .book_info .book_other .book_button button {
+    body .content .main_content .book_detail .book_info .book_other .book_button button {
         width: 47%;
         margin: 10px 1%
     }
-    body.detail .content .main_content .book_detail .book_info .book_other p.name {
+    body .content .main_content .book_detail .book_info .book_other p.name {
         font-size: 16px;
     }
-    body.detail .content .main_content .chapter_content_div {
+    body .content .main_content .chapter_content_div {
         width: calc(100% + 20px);
         margin-left: -10px
     }
 
-    body.detail .content .main_content .chapter_content canvas {
+    body .content .main_content .chapter_content canvas {
         width: calc(100% + 20px);
         margin-left: -10px
     }
-    body.detail .content .main_content .chapter_content .left {
+    body .content .main_content .chapter_content .left {
         margin-left: 10px
     }
-    body.detail .content .main_content .chapter_content .right {
+    body .content .main_content .chapter_content .right {
         float: left
     }
 
@@ -4235,7 +4235,7 @@ body.check_clone .content .list_clone h5 {
         width: 48%;
         padding-bottom: 5px;
     }
-    body.detail .content .main_content .chapter_content .button span {
+    body .content .main_content .chapter_content .button span {
         display: none;
     }
     .list-radio {

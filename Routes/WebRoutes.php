@@ -8,9 +8,9 @@ use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 
-// $router->mount(, function() use ($router) {
-
-// });
+$router->get('/test', function() {
+    return view('comics/details', [], 'main');
+});
 
 $router->GET(
     "/",
@@ -18,10 +18,7 @@ $router->GET(
 );
 
 $router->mount('/(\d+)', function () use ($router) {
-    $router->GET('/', function ($comic_id) {
-        echo "TODO: comic info!";
-        echo $comic_id;
-    });
+    $router->GET('/', ComicsController::details(...));
     $router->GET('/(\d+)', function ($chap_id) {
         echo "TODO: chap info!";
         echo $chap_id;

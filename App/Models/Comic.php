@@ -8,7 +8,7 @@ use App\Models\Chapters;
 
 use App\Models\Genres;
 
-class Comics extends Model 
+class Comic extends Model 
 {
     protected $table = 'comics';
     protected $primaryKey = 'id';

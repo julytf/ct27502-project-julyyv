@@ -1,5 +1,5 @@
 <li>
-    <a href="https://truyenqqmoi.com/truyen-tranh/ta-o-nha-100-nam-khi-ra-ngoai-da-vo-dich-13108">
+    <a href="<?php echo $comic->id ?>">
         <div class="book_avatar">
             <img class="center" src="<?php echo $comic->image ?>" alt="Ta Ở Nhà 100 Năm Khi Ra Ngoài Đã Vô Địch" />
             <div class="top-notice">
@@ -11,7 +11,7 @@
         <div class="book_name qtip" data-qtip="#truyen-tranh-13108">
             <h3>
                 <a title="Ta Ở Nhà 100 Năm Khi Ra Ngoài Đã Vô Địch"
-                    href="https://truyenqqmoi.com/truyen-tranh/ta-o-nha-100-nam-khi-ra-ngoai-da-vo-dich-13108">
+                    href="<?php echo $comic->id ?>">
                     <?php echo $comic->name ?></a>
             </h3>
         </div>
@@ -21,7 +21,7 @@
             <span> <i class="fa fa-eye"></i>1,382,608 </span>
         </div>
         <div class="last_chapter">
-            <a href="https://truyenqqmoi.com/truyen-tranh/ta-o-nha-100-nam-khi-ra-ngoai-da-vo-dich-13108-chap-79.html"
+            <a href="<?php echo $comic->id ?>-chap-79.html"
                 title="Chapter 79">Chapter 79</a>
         </div>
         <div class="more-info" id="truyen-tranh-13108" style="display: none">

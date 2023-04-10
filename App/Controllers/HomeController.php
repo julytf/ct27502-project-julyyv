@@ -23,14 +23,14 @@ class HomeController
         $comics = Comic::skip($skip)->take($perPage)->get();
 
         $count  = Comic::count();
-        $noPage = ceil($count / $perPage);
+        $no_page = ceil($count / $perPage);
         
         return view(
             'home',
             [
                 'comics' => $comics,
                 'page' => $page,
-                'noPage' => $noPage,
+                'no_page' => $no_page,
                 'perPage' => $perPage,
             ],
             'main'

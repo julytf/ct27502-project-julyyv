@@ -4,14 +4,14 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
-use App\Models\Comics;
-use App\Models\Chapters;
+use App\Models\Comic;
+use App\Models\Chapter;
 use App\Models\Comic_Genre;
 class ComicsController
 {
     public static function index()
     {
-        $data = Comics::get();
+        $data = Comic::get();
         return view(
             "comics/index",
             [
@@ -20,9 +20,20 @@ class ComicsController
             "main", // layout
         );
     }
+    public static function details($comic_id)
+    {
+        $data = Comic::where('id',$comic_id)->first();
+        return view(
+            "comics/details",
+            [
+                "comic" => $data,
+            ],
+            "main", // layout
+        );
+    }
     public static function adminIndex()
     {
-        $data = Comics::get();
+        $data = Comic::get();
         return view(
             "comics/index",
             [
@@ -49,7 +60,7 @@ class ComicsController
         $name = $_POST["name"];
         $description = $_POST["description"] ?? null;
         $image = $_FILES["image"];
-        $cover_image = $_FILES["cover_image"];
+        $cover_image = $_FILES["cover_image"] ?? null;
         $status = $_POST["status"] ?? null;
         $others_name = $_POST["others_name"] ?? null;
         $country = $_POST["country"] ?? null;
@@ -69,7 +80,7 @@ class ComicsController
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
         }
 
-        $comic = new Comics;
+        $comic = new Comic;
         $comic->fill([
             'name' => $name,
             'description' => $description,
@@ -86,7 +97,7 @@ class ComicsController
     }
     public static function updateView($comic_id)
     {
-        $comic = Comics::find($comic_id);
+        $comic = Comic::find($comic_id);
 
         return view(
             "comics/update",
@@ -108,7 +119,7 @@ class ComicsController
         $country = $_POST["country"] ?? null;
         $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
 
-        $comic = Comics::find($id);
+        $comic = Comic::find($id);
 
         if( $image['name'] == '' && $cover_image['name'] == '' ){
             $comic->fill([
@@ -146,7 +157,7 @@ class ComicsController
     }
     public static function delete($comic_id)
     {
-        $comic = Comics::find($comic_id);
+        $comic = Comic::find($comic_id);
         $chapters = $comic->chapters()->get();
         $comic_genre_arr = $comic->genres()->get();
         if($chapters){
