@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Comics;
+use App\Models\Comic;
 
 class Genre extends Model 
 {
@@ -15,6 +15,6 @@ class Genre extends Model
     ];
     public $timestamps = false;
     public function comics(){
-        return $this->belongsToMany(Comics::class,'comic_genre','comic_id','genre_id');
+        return $this->belongsToMany(Comic::class,'comic_genre','comic_id','genre_id');
     }
 }

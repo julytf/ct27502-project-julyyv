@@ -7,6 +7,7 @@ use App\Middlewares\AuthMiddleware;
 use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
+use App\Controllers\ChaptersController;
 
 $router->get('/test', function() {
     return view('comics/details', [], 'main');
@@ -70,6 +71,16 @@ $router->mount('/admin', function () use ($router) {
                     "/",
                     ComicsController::update(...)
                 );
+            });
+            $router->mount("/chapters", function () use ($router) {
+                $router->GET(
+                    "/",
+                    ChaptersController::adminIndex(...)
+                );
+                // $router->PATCH(
+                //     "/",
+                //     ComicsController::update(...)
+                // );
             });
             $router->DELETE(
                 "/delete",

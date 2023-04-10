@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Chapters;
-
-use App\Models\Genres;
+use App\Models\Chapter;
+use App\Models\Genre;
 
 class Comic extends Model 
 {
@@ -15,18 +14,23 @@ class Comic extends Model
     protected $fillable = [
         'name',
         'description',
-        'image',
         'cover_image',
         'status',
         'others_name',
-        'country',
-        'release_date',
+        'author'
     ];
     public $timestamps = false;
     public function chapters(){
-        return $this->hasMany(Chapters::class,'comic_id');
+        return $this->hasMany(Chapter::class,'comic_id');
     }
     public function genres(){
-        return $this->belongsToMany(Genres::class,'comic_genre','comic_id','genre_id');
+        return $this->belongsToMany(Genre::class,'comic_genre','comic_id','genre_id');
+    }
+    public function delete_comic(){
+        $comic = $this;
+        if($comic->cover_image){
+            unlink($comic->cover_image);
+        }
+        $comic->delete();
     }
 }

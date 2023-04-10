@@ -9,17 +9,17 @@ use App\Models\Chapter;
 use App\Models\Comic_Genre;
 class ComicsController
 {
-    public static function index()
-    {
-        $data = Comic::get();
-        return view(
-            "comics/index",
-            [
-                "comics" => $data,
-            ],
-            "main", // layout
-        );
-    }
+    // public static function index()
+    // {
+    //     $data = Comic::get();
+    //     return view(
+    //         "comics/index",
+    //         [
+    //             "comics" => $data,
+    //         ],
+    //         "main", // layout
+    //     );
+    // }
     public static function details($comic_id)
     {
         $data = Comic::where('id',$comic_id)->first();
@@ -35,11 +35,11 @@ class ComicsController
     {
         $data = Comic::get();
         return view(
-            "comics/index",
+            "admin/comics/index",
             [
                 "comics" => $data,
             ],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function getOne()
@@ -50,46 +50,48 @@ class ComicsController
     public static function createView()
     {
         return view(
-            "comics/create",
+            "admin/comics/create",
             [],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function create()
     {
         $name = $_POST["name"];
-        $description = $_POST["description"] ?? null;
-        $image = $_FILES["image"];
-        $cover_image = $_FILES["cover_image"] ?? null;
+        $description = $_POST["description"] ? $_POST["description"] : null;
+        $cover_image = $_FILES["cover_image"];
         $status = $_POST["status"] ?? null;
-        $others_name = $_POST["others_name"] ?? null;
-        $country = $_POST["country"] ?? null;
-        $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
+        $author = $_POST["author"] ? $_POST["author"] : null;
 
-        $folder = '../public/images/comics/';
-        $sub_folder = 'images/comics/';
-
-
-        $path_file_image = $folder . basename($image["name"]);
-        $path_store_image = $sub_folder . basename($image["name"]);
-        move_uploaded_file($image["tmp_name"], $path_file_image);
-
-        if($cover_image['name'] != ''){
-            $path_file_cover_image = $folder . basename($cover_image["name"]);
-            $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
-            move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+        if(!$name){
+            flash_message()->create("Name khong duoc bo trong", "error");
+            return redirect('/admin/comics');
         }
 
+        if($cover_image['name'] != ''){
+
+            $folder = '../public/img/comics/';
+            $sub_folder = 'img/comics/';
+            $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+            $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
+
+            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+
+            while(file_exists($path_file_cover_image)){
+                $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            }
+
+            $path_store_cover_image = $sub_folder . $cover_image_name . '.' . $ext;
+            move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+        }
         $comic = new Comic;
         $comic->fill([
             'name' => $name,
             'description' => $description,
-            'image' => $path_store_image,
             'cover_image' => $path_store_cover_image,
             'status' => $status,
-            'others_name' => $others_name,
-            'country' => $country,
-            'release_date' => $release_date
+            'author' => $author,
         ]);
         $comic->save();
 
@@ -100,60 +102,63 @@ class ComicsController
         $comic = Comic::find($comic_id);
 
         return view(
-            "comics/update",
+            "admin/comics/update",
             [
                 "comic" => $comic,
             ],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function update()
     {
         $id = $_POST["id"];
         $name = $_POST["name"];
-        $description = $_POST["description"] ?? null;
-        $image = $_FILES["image"];
+        $description = $_POST["description"] ? $_POST["description"] : null;
         $cover_image = $_FILES["cover_image"];
-        $status = $_POST["status"] ?? null;
-        $others_name = $_POST["others_name"] ?? null;
-        $country = $_POST["country"] ?? null;
-        $release_date = $_POST["release_date"] ? $_POST["release_date"] : null;
+        $status = $_POST["status"] ? $_POST["status"] : null;
+        $author = $_POST["author"] ? $_POST["author"] : null;
 
         $comic = Comic::find($id);
 
-        if( $image['name'] == '' && $cover_image['name'] == '' ){
+        if( $cover_image['name'] == '' ){
             $comic->fill([
                 'name' => $name,
                 'description' => $description,
                 'status' => $status,
-                'others_name' => $others_name,
-                'country' => $country,
-                'release_date' => $release_date
+                'author' => $author,
             ]);
             
             $comic->save();
             return redirect('/admin/comics');
-        }
+        }else{
+            unlink($comic->cover_image);
 
-        $folder = '../public/images/comics/';
-        $sub_folder = 'images/comics/';
+            $folder = '../public/img/comics/';
+            $sub_folder = 'img/comics/';
+            $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+            $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
 
-        if($image['name'] != ''){
-            $path_file_image = $folder . basename($image["name"]);
-            $path_store_image = $sub_folder . basename($image["name"]);
-            move_uploaded_file($image["tmp_name"], $path_file_image);
-        }
+            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
 
-        if($cover_image['name'] != ''){
-            $path_file_cover_image = $folder . basename($cover_image["name"]);
-            $path_store_cover_image = $sub_folder . basename($cover_image["name"]);
+            while(file_exists($path_file_cover_image)){
+                $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            }
+
+            $path_store_cover_image = $sub_folder . $cover_image_name . '.' . $ext;
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
+
+            $comic->fill([
+                'name' => $name,
+                'description' => $description,
+                'cover_image' => $path_store_cover_image,
+                'status' => $status,
+                'author' => $author,
+            ]);
+
+            $comic->save();
+            return redirect('/admin/comics');
         }
-
-        $comic->fill($_POST);
-        $comic->save();
-
-        return redirect('/admin/comics');
     }
     public static function delete($comic_id)
     {
@@ -165,7 +170,7 @@ class ComicsController
                 $images = $chapter->images()->get();
                 if($images){
                     foreach ($images as $image) {
-                        $image->delete();
+                        $image->delete_image();
                     }
                 }
                 $chapter->delete();
@@ -173,10 +178,11 @@ class ComicsController
         }
         if($comic_genre_arr){
             foreach ($comic_genre_arr as $comic_genre) {
+                // die($comic_genre->pivot);
                 $comic_genre->pivot->delete();
             }
         }
-        $comic->delete();
+        $comic->delete_comic();
         return redirect('/admin/comics');
     }
 }

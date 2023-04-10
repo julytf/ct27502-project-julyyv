@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Images;
+use App\Models\Image;
 
-class Chapters extends Model 
+class Chapter extends Model 
 {
     protected $table = 'chapters';
     protected $primaryKey = 'id';
@@ -17,6 +17,6 @@ class Chapters extends Model
     public $timestamps = false;
     
     public function images(){
-        return $this->hasMany(Images::class,'chapter_id');
+        return $this->hasMany(Image::class,'chapter_id');
     }
 }

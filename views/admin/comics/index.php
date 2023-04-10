@@ -4,26 +4,21 @@
         <th>id</th>
 		<th>name</th>
 		<th>description</th>
-		<th>image</th>
 		<th>cover_image</th>
 		<th>status</th>
-		<th>others_name</th>
-        <th>country</th>
-        <th>release_date</th>
+		<th>author</th>
         <th>edit</th>
         <th>delete</th>
+        <th>Add chapter</th>
 	</tr>
-	<?php foreach ($comics as $key => $comic): ?>
+	<?php foreach ($comics as $comic): ?>
 		<tr>
             <td><?php echo $comic['id'] ?></td>
             <td><?php echo $comic['name'] ?></td>
             <td><?php echo $comic['description'] ?></td>
-			<td><img height='100' src="/<?php echo $comic['image'] ?>"></td>
             <td><img height='100' src="/<?php echo $comic['cover_image'] ?>"></td>
             <td><?php echo $comic['status'] ?></td>
-            <td><?php echo $comic['others_name'] ?></td>
-            <td><?php echo $comic['country'] ?></td>
-            <td><?php echo $comic['release_date'] ?></td>
+            <td><?php echo $comic['author'] ?></td>
 			<td>
 				<a href="/admin/comics/<?php echo $comic['id'] ?>/edit">
 					Edit
@@ -35,6 +30,12 @@
 					<input type="hidden" name="_method" value="DELETE">
 					<button>DELETE</button>
 				</form>
+			</td>
+
+			<td>
+				<a href="/admin/comics/<?php echo $comic['id'] ?>/chapters">
+					view chapter
+				</a>
 			</td>
 		</tr>
 	<?php endforeach ?>

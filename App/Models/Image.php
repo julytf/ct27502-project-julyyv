@@ -14,4 +14,11 @@ class Image extends Model
         'chapter_id'
     ];
     public $timestamps = false;
+    public function delete_image(){
+        $image = $this;
+        if($image->file){
+            unlink($image->file);
+        }
+        $image->delete();
+    }
 }
