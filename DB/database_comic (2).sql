@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `comics` (
   `name` varchar(100) NOT NULL,
   `description` text,
   `cover_image` text,
-  `status` tinyint(1) DEFAULT NULL,
+  `status` char(10) DEFAULT NULL,
   `author` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
