@@ -15,3 +15,11 @@ button {
 button p {
   margin: 0 !important;
 }
+
+.div_middle {
+  height: initial;
+}
+
+.main_content {
+  float: initial !important;
+}
