@@ -77,10 +77,37 @@ $router->mount('/admin', function () use ($router) {
                     "/",
                     ChaptersController::adminIndex(...)
                 );
-                // $router->PATCH(
-                //     "/",
-                //     ComicsController::update(...)
-                // );
+                $router->mount('/create', function () use ($router) {
+                    $router->GET(
+                        "/",
+                        ChaptersController::createView(...)
+                    );
+                    $router->POST(
+                        "/",
+                        ChaptersController::create(...)
+                    );
+                });
+                $router->mount("/(\d+)", function () use ($router) {
+
+                    $router->GET(
+                        "/",
+                        ChaptersController::getOne(...)
+                    );
+                    $router->mount("/edit", function () use ($router) {
+                        $router->GET(
+                            "/",
+                            ChaptersController::updateView(...)
+                        );
+                        $router->PATCH(
+                            "/",
+                            ChaptersController::update(...)
+                        );
+                    });
+                    // $router->DELETE(
+                    //     "/delete",
+                    //     ComicsController::delete(...)
+                    // );
+                });
             });
             $router->DELETE(
                 "/delete",

@@ -9,7 +9,7 @@
 		<th>author</th>
         <th>edit</th>
         <th>delete</th>
-        <th>Add chapter</th>
+        <th>view comic</th>
 	</tr>
 	<?php foreach ($comics as $comic): ?>
 		<tr>
@@ -34,7 +34,7 @@
 
 			<td>
 				<a href="/admin/comics/<?php echo $comic['id'] ?>/chapters">
-					view chapter
+					view
 				</a>
 			</td>
 		</tr>
