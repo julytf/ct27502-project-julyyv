@@ -71,7 +71,7 @@ body.dark .content .main_content button.chat_menu {
 }
 
 body.dark .content .main_content button.active {
-    background-color: #e4e6eb!important;
+    background-color: var(--primary-color);
     color: #242526!important
 }
 
@@ -176,25 +176,25 @@ body.dark header .bottom ul li p.tags_name:hover {
     background-color: #18191a
 }
 
-body.dark.detail .content .main_content .book_detail {
+body.dark .content .main_content .book_detail {
     background-color: #242526
 }
 
-body.dark.detail .content .main_content .book_detail .book_info .book_other p.name {
+body.dark .content .main_content .book_detail .book_info .book_other p.name {
     color: #e4e6eb
 }
 
-body.dark.detail .content .main_content .book_detail .book_info .book_other .kind p {
+body.dark .content .main_content .book_detail .book_info .book_other .kind p {
     background-color: #18191a;
     color: #b0b3b8;
     border-color: #18191a
 }
 
-body.dark.detail .content .main_content .book_detail .book_info .book_other .book_button button {
+body.dark .content .main_content .book_detail .book_info .book_other .book_button button {
     background-color: #18191a!important
 }
 
-body.dark.detail .content .main_content .book_detail h3 {
+body.dark .content .main_content .book_detail h3 {
     color: #e4e6eb
 }
 
@@ -215,11 +215,11 @@ body.dark .book_comment h3 {
     color: #e4e6eb
 }
 
-body.dark.detail .content .main_content .chapter_content .chapter_control {
+body.dark .content .main_content .chapter_content .chapter_control {
     background-color: #242526
 }
 
-body.dark.detail .content .main_content .book_detail .list_chapter table tr td .fee_amount {
+body.dark .content .main_content .book_detail .list_chapter table tr td .fee_amount {
     color: #e4e6eb
 }
 

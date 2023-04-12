@@ -23,3 +23,15 @@ button p {
 .main_content {
   float: initial !important;
 }
+
+footer .logo {
+  width: 300px;
+}
+
+footer {
+  padding-bottom: 50px;
+}
+
+body .content .page_redirect p {
+  border: 0;
+}

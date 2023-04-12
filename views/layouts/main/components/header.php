@@ -13,13 +13,12 @@
         <i class="fa fa-lightbulb" aria-hidden="true"></i>
       </button>
       <div class="top_search">
-        <input class="search" id="search_input" placeholder="Bạn muốn tìm truyện gì" />
-        <button>
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-        <div class="search_result">
-          <ul></ul>
-        </div>
+        <form>
+          <input class="search" id="search_input" name="q" value="<?php echo $q ?? '' ?>" placeholder="Bạn muốn tìm truyện gì" />
+          <button>
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
       </div>
       <div class="clear"></div>
     </div>
@@ -28,12 +27,12 @@
     <div class="div_middle">
       <!-- TODO: tags -->
       <ul id="header_left_menu">
-        <li class="menu_hidden">
+        <!-- <li class="menu_hidden">
           <a class="tags_name pc_hover" href="">Trinh Thám</a>
         </li>
         <li class="menu_hidden">
           <a class="tags_name pc_hover" href="">Hài Hước</a>
-        </li>
+        </li> -->
       </ul>
       <div class="clear"></div>
     </div>

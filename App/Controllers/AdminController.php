@@ -11,7 +11,7 @@ class AdminController
         return view(
             "admin/index",
             [],
-            "main"
+            "admin"
         );
     }
 }

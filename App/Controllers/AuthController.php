@@ -8,7 +8,7 @@ class AuthController
 {
     static function loginView()
     {
-        return view("auth/login", [], 'admin');
+        return view("auth/login");
     }
     static function login()
     {

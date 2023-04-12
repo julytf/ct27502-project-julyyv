@@ -4,9 +4,12 @@ namespace App\Controllers;
 
 require_once '../vendor/autoload.php';
 
+use id;
 use App\Models\Comic;
 use App\Models\Chapter;
+use App\Enums\ComicStatus;
 use App\Models\Comic_Genre;
+
 class ComicsController
 {
     public static function index()
@@ -22,11 +25,30 @@ class ComicsController
     }
     public static function details($comic_id)
     {
-        $data = Comic::where('id',$comic_id)->first();
+        $comic = Comic::find($comic_id);
+        $chapters = $comic->chapters;
+        $genres = $comic->genres;
         return view(
             "comics/details",
             [
-                "comic" => $data,
+                "comic" => $comic,
+                "chapters" => $chapters,
+                "genres" => $genres,
+            ],
+            "main", // layout
+        );
+    }
+    public static function chapter($comic_id, $chapter_id)
+    {
+        $chapter = Chapter::find($chapter_id);
+        $comic = Comic::find($chapter->comic_id);
+        $images = $chapter->images;
+        return view(
+            "comics/chapter",
+            [
+                'comic' => $comic,
+                'chapter' => $chapter,
+                'images' => $images,
             ],
             "main", // layout
         );
@@ -39,7 +61,7 @@ class ComicsController
             [
                 "comics" => $data,
             ],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function getOne()
@@ -52,7 +74,7 @@ class ComicsController
         return view(
             "comics/create",
             [],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function create()
@@ -104,7 +126,7 @@ class ComicsController
             [
                 "comic" => $comic,
             ],
-            "main", // layout
+            "admin", // layout
         );
     }
     public static function update()

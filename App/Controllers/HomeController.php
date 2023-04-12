@@ -11,19 +11,22 @@ class HomeController
 {
     public static function index()
     {   
-        parse_str($_SERVER['QUERY_STRING'], $query);
+        $perPage = $_GET['perPage'] ?? 24;
+        $q = $_GET['q'] ?? '';
 
-        $page = $query['page'] ?? 1;
+        $query = Comic::where('name', 'like', '%' . $q . '%');
+
+        $count  = $query->count();
+        $no_page = ceil($count / $perPage);
+
+        $page = $_GET['page'] ?? 1;
         if($page < 1) $page = 1;
-
-        $perPage = $query['perPage'] ?? 6;
+        if($page > $no_page) $page = $no_page;
 
         $skip = ($page - 1) * $perPage;
 
-        $comics = Comic::skip($skip)->take($perPage)->get();
+        $comics = $query->skip($skip)->take($perPage)->get();
 
-        $count  = Comic::count();
-        $no_page = ceil($count / $perPage);
         
         return view(
             'home',
@@ -32,6 +35,7 @@ class HomeController
                 'page' => $page,
                 'no_page' => $no_page,
                 'perPage' => $perPage,
+                'q' => $q,
             ],
             'main'
         );

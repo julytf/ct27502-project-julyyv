@@ -19,10 +19,7 @@ $router->GET(
 
 $router->mount('/(\d+)', function () use ($router) {
     $router->GET('/', ComicsController::details(...));
-    $router->GET('/(\d+)', function ($chap_id) {
-        echo "TODO: chap info!";
-        echo $chap_id;
-    });
+    $router->GET('/(\d+)', ComicsController::chapter(...));
 });
 
 $router->before('GET', '/admin.*', AuthMiddleware::handler(...));
