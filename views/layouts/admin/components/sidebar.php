@@ -57,6 +57,24 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/genres" class="nav-link">
+                                <i class="fa-solid fa-book"></i>
+                                <p>
+                                    Genres List
+                                    <!-- <span class="right badge badge-danger">New</span> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/genres/create" class="nav-link">
+                                <i class="fa-solid fa-book"></i>
+                                <p>
+                                    Create Genres
+                                    <!-- <span class="right badge badge-danger">New</span> -->
+                                </p>
+                            </a>
+                        </li>
                         <!-- <li class="nav-header">EXAMPLES</li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">

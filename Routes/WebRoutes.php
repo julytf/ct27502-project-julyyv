@@ -8,6 +8,7 @@ use App\Controllers\ComicsController;
 use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Controllers\ChaptersController;
+use App\Controllers\GenresController;
 
 $router->get('/test', function() {
     return view('comics/details', [], 'main');
@@ -119,6 +120,43 @@ $router->mount('/admin', function () use ($router) {
             $router->POST(
                 "/",
                 ComicsController::create(...)
+            );
+        });
+    });
+    $router->mount('/genres', function () use ($router) {
+        $router->GET(
+            "/",
+            GenresController::adminIndex(...)
+        );
+        $router->mount("/(\d+)", function () use ($router) {
+            $router->GET(
+                "/",
+                GenresController::getOne(...)
+            );
+            $router->mount("/edit", function () use ($router) {
+                $router->GET(
+                    "/",
+                    GenresController::updateView(...)
+                );
+                $router->PATCH(
+                    "/",
+                    GenresController::update(...)
+                );
+            });
+            $router->DELETE(
+                "/delete",
+                GenresController::delete(...)
+            );
+
+        });
+        $router->mount('/create', function () use ($router) {
+            $router->GET(
+                "/",
+                GenresController::createView(...)
+            );
+            $router->POST(
+                "/",
+                GenresController::create(...)
             );
         });
     });
