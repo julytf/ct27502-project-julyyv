@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Chapters;
+use App\Models\Chapter;
 
-use App\Models\Genres;
+use App\Models\Genre;
 
 class Comic extends Model
 {
@@ -22,9 +22,9 @@ class Comic extends Model
     ];
     public $timestamps = false;
     public function chapters(){
-        return $this->hasMany(Chapters::class,'comic_id');
+        return $this->hasMany(Chapter::class,'comic_id');
     }
     public function genres(){
-        return $this->belongsToMany(Genres::class,'comic_genre','comic_id','genre_id');
+        return $this->belongsToMany(Genre::class,'comic_genre','comic_id','genre_id');
     }
 }
