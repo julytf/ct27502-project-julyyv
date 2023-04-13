@@ -101,10 +101,10 @@ $router->mount('/admin', function () use ($router) {
                             ChaptersController::update(...)
                         );
                     });
-                    // $router->DELETE(
-                    //     "/delete",
-                    //     ComicsController::delete(...)
-                    // );
+                    $router->DELETE(
+                        "/delete",
+                        ChaptersController::delete(...)
+                    );
                 });
             });
             $router->DELETE(

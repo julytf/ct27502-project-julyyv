@@ -21,7 +21,7 @@
 				</a>
 			</td>
 			<td>
-				<form method="POST" action="/admin/comics/<?php echo $chapter['id'] ?>/delete">
+				<form method="POST" action="/admin/comics/<?php echo $comic_id ?>/chapters/<?php echo $chapter['id'] ?>/delete">
 					<input type="hidden" name="_method" value="DELETE">
 					<button>DELETE</button>
 				</form>

@@ -101,9 +101,28 @@ function view($view, $data = [], $layout = null)
         return;
     }
 }
-
 function redirect($location)
 {
     header('Location: ' . $location);
     exit();
+}
+function findObjectById($id,$array){
+
+    foreach ( $array as $element ) {
+        if ( $id == $element->id ) {
+            return $element;
+        }
+    }
+
+    return false;
+}
+function findObjectByIndex($index,$array){
+
+    foreach ( $array as $element ) {
+        if ( $index == $element->index_chapter ) {
+            return $element;
+        }
+    }
+
+    return false;
 }

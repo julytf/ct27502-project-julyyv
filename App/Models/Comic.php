@@ -27,4 +27,11 @@ class Comic extends Model
     public function genres(){
         return $this->belongsToMany(Genre::class,'comic_genre','comic_id','genre_id');
     }
+    public function delete_comic(){
+        $comic = $this;
+        if($comic->cover_image){
+            unlink($comic->cover_image);
+        }
+        $comic->delete();
+    }
 }

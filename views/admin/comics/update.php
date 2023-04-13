@@ -17,6 +17,15 @@
         <option value="hoan thanh"
         <?php if($comic['status'] === 'hoan thanh') echo "selected" ?> >hoan thanh</option>
     </select>
+    <br>
+    Genre:
+    <br>
+    <?php foreach ($genres as $genre): ?>
+        <?php echo $genre['name'] ?>
+        <input type="checkbox" name="genre[]" value="<?php echo $genre['id'] ?>" 
+        <?php echo findObjectById($genre['id'],$comic_genre_arr) !== false ? "checked" : "" ?>
+        >
+	<?php endforeach ?>
     </br>
     <label>author: <input type="text" name="author"
     value="<?php echo $comic['author'] ?? '' ?>"></label>

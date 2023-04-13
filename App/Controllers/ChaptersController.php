@@ -60,10 +60,11 @@ class ChaptersController
     }
     public static function create($comic_id)
     {
+        $chapters = Comic::find($comic_id)->chapters()->get();
         $name = $_POST["name"] ? $_POST["name"] : null;
         $index_chapter = $_POST["index_chapter"];
-        $comic_id = $_POST["comic_id"];
-        if($index_chapter == ''){
+
+        if($index_chapter == '' || findObjectByIndex($index_chapter,$chapters) !== false ){
             return redirect("/admin/comics/" . $comic_id . "/chapters");
         }
         $chapter = new Chapter();
@@ -90,11 +91,12 @@ class ChaptersController
     }
     public static function update($comic_id)
     {
+        $chapters = Comic::find($comic_id)->chapters()->get();
         $id = $_POST["id"];
         $name = $_POST["name"] ? $_POST["name"] : null;
         $index_chapter = $_POST["index_chapter"];
 
-        if($index_chapter == ''){
+        if( $index_chapter == '' || findObjectByIndex($index_chapter,$chapters) !== false ){
             return redirect("/admin/comics/" . $comic_id . "/chapters");
         }
 
@@ -109,29 +111,16 @@ class ChaptersController
         return redirect("/admin/comics/" . $comic_id . "/chapters");
 
     }
-    // public static function delete($comic_id)
-    // {
-    //     $comic = Comic::find($comic_id);
-    //     $chapters = $comic->chapters()->get();
-    //     $comic_genre_arr = $comic->genres()->get();
-    //     if($chapters){
-    //         foreach ($chapters as $chapter) {
-    //             $images = $chapter->images()->get();
-    //             if($images){
-    //                 foreach ($images as $image) {
-    //                     $image->delete_image();
-    //                 }
-    //             }
-    //             $chapter->delete();
-    //         }
-    //     }
-    //     if($comic_genre_arr){
-    //         foreach ($comic_genre_arr as $comic_genre) {
-    //             // die($comic_genre->pivot);
-    //             $comic_genre->pivot->delete();
-    //         }
-    //     }
-    //     $comic->delete_comic();
-    //     return redirect('/admin/comics');
-    // }
+    public static function delete($comic_id,$chapter_id)
+    {
+        $chapter = Chapter::find($chapter_id);
+        $images = $chapter->images()->get();
+        if($images){
+            foreach ($images as $image) {
+                $image->delete_image();
+            }
+        }
+        $chapter->delete();
+        return redirect('/admin/comics/' . $comic_id . '/chapters' );
+    }
 }

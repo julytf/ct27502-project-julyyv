@@ -11,6 +11,13 @@
         <option value="dang cap nhap">Dang cap nhap</option>
         <option value="hoan thanh">hoan thanh</option>
     </select>
+    <br>
+    Genre:
+    <br>
+    <?php foreach ($genres as $genre): ?>
+        <?php echo $genre['name'] ?>
+        <input type="checkbox" name="genre[]" value="<?php echo $genre['id'] ?>" >
+	<?php endforeach ?>
     </br>
     <label>author: <input type="text" name="author"></label>
     </br>
