@@ -106,7 +106,6 @@ class ComicsController
         if($cover_image['name'] != ''){
 
             $folder = '../public/img/';
-            $sub_folder = 'img/';
             $cover_image_name = 'cover_image_' . rand(100000000,999999999);
             $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
 
@@ -117,7 +116,7 @@ class ComicsController
                 $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
             }
 
-            $path_store_cover_image = $sub_folder . $cover_image_name . '.' . $ext;
+            $path_store_cover_image = $cover_image_name . '.' . $ext;
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
         }
         $comic = new Comic;
@@ -179,10 +178,9 @@ class ComicsController
             $comic->genres()->attach($genres);
             return redirect('/admin/comics');
         }else{
-            unlink($comic->cover_image);
+            unlink("img/" . $comic->cover_image);
 
             $folder = '../public/img/';
-            $sub_folder = 'img/';
             $cover_image_name = 'cover_image_' . rand(100000000,999999999);
             $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
 
@@ -193,7 +191,7 @@ class ComicsController
                 $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
             }
 
-            $path_store_cover_image = $sub_folder . $cover_image_name . '.' . $ext;
+            $path_store_cover_image = $cover_image_name . '.' . $ext;
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
 
             $comic->fill([

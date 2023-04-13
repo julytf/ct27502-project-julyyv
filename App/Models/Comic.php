@@ -30,7 +30,7 @@ class Comic extends Model
     public function delete_comic(){
         $comic = $this;
         if($comic->cover_image){
-            unlink($comic->cover_image);
+            unlink("img/" . $comic->cover_image);
         }
         $comic->delete();
     }

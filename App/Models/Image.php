@@ -17,7 +17,7 @@ class Image extends Model
     public function delete_image(){
         $image = $this;
         if($image->file){
-            unlink($image->file);
+            unlink("img/" . $image->file);
         }
         $image->delete();
     }

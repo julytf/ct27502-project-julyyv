@@ -5,5 +5,8 @@
     <label>index_chapter: <input type="text" name="index_chapter"></label>
     </br>
     <input type="hidden" name="comic_id" value="<?php echo $comic_id ?>" >
+    <br>
+    <label>images:<input type="file" name="upload[]" multiple></label>
+    <br>
     <input type="submit">
 </form>

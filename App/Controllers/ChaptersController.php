@@ -7,6 +7,7 @@ require_once '../vendor/autoload.php';
 use App\Models\Comic;
 use App\Models\Chapter;
 use App\Models\Comic_Genre;
+use App\Models\Image;
 
 class ChaptersController
 {
@@ -75,6 +76,32 @@ class ChaptersController
         ]);
         $chapter->save();
 
+        // ------- handle create images ---- 
+
+        $folder = '../public/img/';
+        $total = count($_FILES['upload']['name']);
+
+        for( $i=0 ; $i < $total ; $i++ ) {
+
+            //Get the temp file path
+            $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+          
+            //Make sure we have a file path
+            if ($tmpFilePath != ""){
+                //Setup our new file path
+                $path_file_image = $folder . $_FILES['upload']['name'][$i];
+                move_uploaded_file($tmpFilePath, $path_file_image);
+
+                $image = new Image();
+                $image->fill([
+                    "file" => $_FILES['upload']['name'][$i],
+                    "index_image" => $i,
+                    "chapter_id" => $chapter->id
+                ]);
+                $image->save();
+            }
+        }
+
         return redirect("/admin/comics/" . $comic_id . "/chapters");
     }
     public static function updateView($comic_id,$chapter_id)
@@ -89,14 +116,18 @@ class ChaptersController
             "admin", // layout
         );
     }
-    public static function update($comic_id)
+    public static function update($comic_id,$chapter_id)
     {
         $chapters = Comic::find($comic_id)->chapters()->get();
         $id = $_POST["id"];
         $name = $_POST["name"] ? $_POST["name"] : null;
         $index_chapter = $_POST["index_chapter"];
 
-        if( $index_chapter == '' || findObjectByIndex($index_chapter,$chapters) !== false ){
+        $temp_chapter = findObjectByIndex($index_chapter,$chapters);
+        if($temp_chapter !== false && $temp_chapter["index_chapter"] != $index_chapter){
+            return redirect("/admin/comics/" . $comic_id . "/chapters");
+        }
+        if( $index_chapter == '' ){
             return redirect("/admin/comics/" . $comic_id . "/chapters");
         }
 
@@ -107,6 +138,40 @@ class ChaptersController
             "index_chapter" => $index_chapter,
         ]);
         $chapter->save();
+
+        // ------- handle create images ---- 
+        
+        // delete all images of chapter
+        $images = $chapter->images()->get();
+        if($images){
+            foreach ($images as $image) {
+                $image->delete_image();
+            }
+        }
+
+        $folder = '../public/img/';
+        $total = count($_FILES['upload']['name']);
+
+        for( $i=0 ; $i < $total ; $i++ ) {
+
+            //Get the temp file path
+            $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+          
+            //Make sure we have a file path
+            if ($tmpFilePath != ""){
+                //Setup our new file path
+                $path_file_image = $folder . $_FILES['upload']['name'][$i];
+                move_uploaded_file($tmpFilePath, $path_file_image);
+
+                $image = new Image();
+                $image->fill([
+                    "file" => $_FILES['upload']['name'][$i],
+                    "index_image" => $i,
+                    "chapter_id" => $chapter->id
+                ]);
+                $image->save();
+            }
+        }
 
         return redirect("/admin/comics/" . $comic_id . "/chapters");
 

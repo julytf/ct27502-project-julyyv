@@ -5,5 +5,8 @@
     <label>name: <input type="text" name="name" value="<?php echo $chapter['name'] ?? '' ?>"></label>
     </br>
     <label>index_chapter: <input type="text" name="index_chapter" value="<?php echo $chapter['index_chapter'] ?? '' ?>" ></label>
+    <br>
+    <label>images:<input type="file" name="upload[]" multiple></label>
+    <br>
     <input type="submit">
 </form>
