@@ -20,8 +20,8 @@ $router->GET(
 );
 
 $router->mount('/(\d+)', function () use ($router) {
-    $router->GET('/', ComicsController::details(...));
-    $router->GET('/(\d+)', ComicsController::chapter(...));
+    $router->GET('/', ComicsController::detail(...));
+    $router->GET('/(\d+)', ChaptersController::detail(...));
 });
 
 $router->before('GET', '/admin.*', AuthMiddleware::handler(...));

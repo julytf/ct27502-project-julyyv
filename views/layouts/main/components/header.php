@@ -13,7 +13,7 @@
         <i class="fa fa-lightbulb" aria-hidden="true"></i>
       </button>
       <div class="top_search">
-        <form>
+        <form action="/">
           <input class="search" id="search_input" name="q" value="<?php echo $q ?? '' ?>" placeholder="Bạn muốn tìm truyện gì" />
           <button>
             <i class="fa fa-search" aria-hidden="true"></i>

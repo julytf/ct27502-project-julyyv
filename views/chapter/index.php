@@ -13,7 +13,7 @@
                                     <meta itemprop="position" content="1">
                                 </li>
                                 <li itemprop="itemListElement">
-                                    <a itemprop="item">
+                                    <a  href="/<?php echo $comic->id ?>" itemprop="item">
                                         <span itemprop="name"><?php echo $comic->name ?></span>
                                     </a>
                                     <meta itemprop="position" content="2">
@@ -31,8 +31,8 @@
                         </div>
                         <div class="chapter-control">
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-info go-btn prev text-white m-1 d-block" ><em class="fa fa-arrow-left"></em> Chap trước</a>
-                                <a class="btn btn-info go-btn next text-white m-1 d-none" >Chap sau <em class="fa fa-arrow-right"></em></a>
+                                <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if(!$previous_chapter_id) echo 'd-none' ?>" ><em class="fa fa-arrow-left"></em> Chap trước</a>
+                                <a href="/<?php echo $comic->id ?>/<?php echo $next_chapter_id ?>" class="btn btn-info go-btn next text-white m-1 <?php if(!$next_chapter_id) echo 'd-none' ?>" >Chap sau <em class="fa fa-arrow-right"></em></a>
                             </div>
                         </div>
                     </div>
@@ -54,29 +54,29 @@
                     <div class="box bottom-chap">
                         <div class="chapter-control">
                             <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-info go-btn prev text-white m-1 d-block"><em class="fa fa-arrow-left"></em> Chap trước</a>
-                                <a class="btn btn-info go-btn next text-white m-1 d-none">Chap sau <em class="fa fa-arrow-right"></em></a>
+                                <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if(!$previous_chapter_id) echo 'd-none' ?>" ><em class="fa fa-arrow-left"></em> Chap trước</a>
+                                <a href="/<?php echo $comic->id ?>/<?php echo $next_chapter_id ?>" class="btn btn-info go-btn next text-white m-1 <?php if(!$next_chapter_id) echo 'd-none' ?>" >Chap sau <em class="fa fa-arrow-right"></em></a>
                             </div>
                         </div>
                         <ol class="breadcrumb">
-                            <li itemprop="itemListElement">
-                                <a itemprop="item">
-                                    <span itemprop="name">Trang Chủ</span>
-                                </a>
-                                <meta itemprop="position" content="1">
-                            </li>
-                            <li itemprop="itemListElement">
-                                <a itemprop="item">
-                                    <span itemprop="name"><?php echo $comic->name ?></span>
-                                </a>
-                                <meta itemprop="position" content="2">
-                            </li>
-                            <li itemprop="itemListElement">
-                                <a itemprop="item">
-                                    <span itemprop="name">Chương <?php echo $chapter->index_chapter ?></span>
-                                </a>
-                                <meta itemprop="position" content="3">
-                            </li>
+                                <li itemprop="itemListElement">
+                                    <a itemprop="item">
+                                        <span itemprop="name">Trang Chủ</span>
+                                    </a>
+                                    <meta itemprop="position" content="1">
+                                </li>
+                                <li itemprop="itemListElement">
+                                    <a  href="/<?php echo $comic->id ?>" itemprop="item">
+                                        <span itemprop="name"><?php echo $comic->name ?></span>
+                                    </a>
+                                    <meta itemprop="position" content="2">
+                                </li>
+                                <li itemprop="itemListElement">
+                                    <a itemprop="item">
+                                        <span itemprop="name">Chương <?php echo $chapter->index_chapter ?></span>
+                                    </a>
+                                    <meta itemprop="position" content="3">
+                                </li>
                         </ol>
                     </div>
 

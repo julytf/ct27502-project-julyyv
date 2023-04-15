@@ -13,43 +13,17 @@ use App\Models\Genre;
 
 class ComicsController
 {
-    // public static function index()
-    // {
-    //     $data = Comic::get();
-    //     return view(
-    //         "comics/index",
-    //         [
-    //             "comics" => $data,
-    //         ],
-    //         "main", // layout
-    //     );
-    // }
-    public static function details($comic_id)
+    public static function detail($comic_id)
     {
         $comic = Comic::find($comic_id);
         $chapters = $comic->chapters;
         $genres = $comic->genres;
         return view(
-            "comics/details",
+            "comic",
             [
                 "comic" => $comic,
                 "chapters" => $chapters,
                 "genres" => $genres,
-            ],
-            "main", // layout
-        );
-    }
-    public static function chapter($comic_id, $chapter_id)
-    {
-        $chapter = Chapter::find($chapter_id);
-        $comic = Comic::find($chapter->comic_id);
-        $images = $chapter->images;
-        return view(
-            "comics/chapter",
-            [
-                'comic' => $comic,
-                'chapter' => $chapter,
-                'images' => $images,
             ],
             "main", // layout
         );
@@ -65,10 +39,21 @@ class ComicsController
             "admin", // layout
         );
     }
-    public static function getOne()
+    
+    public static function getOne($comic_id)
     {
-        echo 'hello';
-        echo "TODO:";
+        $comic = Comic::find($comic_id);
+        $genres = Genre::get();
+        $comic_genre_arr = $comic->genres()->get();
+        return view(
+            "admin/comics/detail",
+            [
+                "comic" => $comic,
+                "genres" => $genres,
+                "comic_genre_arr" => $comic_genre_arr,
+            ],
+            "admin", // layout
+        );
     }
     public static function createView()
     {
@@ -176,7 +161,7 @@ class ComicsController
             $comic->save();
             $comic->genres()->detach();
             $comic->genres()->attach($genres);
-            return redirect('/admin/comics');
+            return redirect('/admin/comics/'.$comic->id);
         }else{
             unlink("img/" . $comic->cover_image);
 
@@ -207,7 +192,7 @@ class ComicsController
             $comic->genres()->detach();
             $comic->genres()->attach($genres);
 
-            return redirect('/admin/comics');
+            return redirect('/admin/comics/'.$comic->id);
         }
     }
     public static function delete($comic_id)

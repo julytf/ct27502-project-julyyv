@@ -18,6 +18,8 @@
             <?php foreach ($comics as $comic) {
               include 'components/comicItem.php';
             } ?>
+
+            <?php if($comics->count() === 0) echo "Rất tiếc, không tìm thấy kết quả nào!" ?>
           </ul>
           <div class="clear"></div>
         </div>

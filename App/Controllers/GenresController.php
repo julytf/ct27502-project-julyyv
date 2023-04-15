@@ -44,10 +44,17 @@ class GenresController
             "admin", // layout
         );
     }
-    public static function getOne()
+    public static function getOne($genre_id)
     {
-        echo 'hello';
-        echo "TODO:";
+        $genre = Genre::find($genre_id);
+
+        return view(
+            "admin/genres/detail",
+            [
+                "genre" => $genre,
+            ],
+            "admin", // layout
+        );
     }
     public static function createView()
     {
@@ -91,7 +98,7 @@ class GenresController
         $name = $_POST["name"];
         $description = $_POST["description"];
         if($name == '' || $description == '' ){
-            return redirect("/admin/genres");
+            return redirect("/admin/genres/".$genre_id);
         }
         $genre = Genre::find($genre_id);
 
@@ -101,7 +108,7 @@ class GenresController
         ]);
         $genre->save();
 
-        return redirect("/admin/genres");
+        return redirect("/admin/genres/".$genre_id);
 
     }
     public static function delete($genre_id)
