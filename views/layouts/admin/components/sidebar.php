@@ -23,7 +23,7 @@
                         <div class="info w-100">
                             <a class="d-inline-block">
                                 <?php echo $_ENV['ADMIN_USERNAME'] ?>
-                                <a href="/admin/logout" class="btn btn-light float-right">Logout</a>
+                                <a href="/admin/logout" class="btn btn-light btn-sm text-black float-right">Logout</a>
                             </a>
                         </div>
                     </div>

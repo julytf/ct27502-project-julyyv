@@ -15,7 +15,7 @@
 
 <body class="sidebar-mini layout-fixed" style="height: auto;">
   <div class="wrapper">
-    <?php require_once "components/header.php"; ?>
+    <?php //require_once "components/header.php"; ?>
 
     <?php require 'components/sidebar.php' ?>
     <div class="content-wrapper" >
@@ -24,7 +24,7 @@
       <?php require_once $body; ?>
     </div>
 
-    <?php require_once "components/footer.php"; ?>
+    <?php //require_once "components/footer.php"; ?>
   </div>
 </body>
 
