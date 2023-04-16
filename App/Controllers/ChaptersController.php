@@ -125,7 +125,7 @@ class ChaptersController
             return redirect("/admin/comics/" . $comic_id . "/chapters");
         }
         if ($index_chapter == '') {
-            return redirect("/admin/comics/" . $comic_id . "/chapters");
+            return redirect("/admin/comics/" . $comic_id);
         }
 
         $chapter = Chapter::find($id);
@@ -170,7 +170,7 @@ class ChaptersController
             }
         }
 
-        return redirect("/admin/comics/" . $comic_id . "/chapters");
+        return redirect("/admin/comics/" . $comic_id);
     }
     public static function delete($comic_id, $chapter_id)
     {
@@ -182,6 +182,6 @@ class ChaptersController
             }
         }
         $chapter->delete();
-        return redirect('/admin/comics/' . $comic_id . '/chapters');
+        return redirect('/admin/comics/' . $comic_id);
     }
 }
