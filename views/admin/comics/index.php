@@ -6,7 +6,7 @@
 				<div class="card-tools d-flex justify-content-end" style="gap: 5px;">
 					<form class="m-0">
 						<div class="input-group input-group-sm">
-							<input type="text" name="q" class="form-control" placeholder="Search">
+							<input type="text" name="q" class="form-control" placeholder="Search" value="<?php echo $q; ?>">
 							<div class="input-group-append">
 								<button type="submit" class="btn btn-default">
 									<i class="fas fa-search"></i>
@@ -44,7 +44,7 @@
 								<td><?php echo $comic->status ?></td>
 								<td><?php echo truncate($comic->author, 20) ?></td>
 								<td>
-									<a href="/admin/comics/<?php echo $comic->id ?>/edit" class="btn btn-primary">Edit</a>
+									<a href="/admin/comics/<?php echo $comic->id ?>/edit" class="btn btn-primary btn-sm">Edit</a>
 								</td>
 							</tr>
 						<?php endforeach ?>

@@ -3,6 +3,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title">Comics</h3>
+				<a href="/admin/genres/create" class="btn btn-primary btn-sm float-right">Create</a>
 			</div>
 
 			<div class="card-body table-responsive p-0">
