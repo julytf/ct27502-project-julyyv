@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Comics</h3>
+				<h3 class="card-title">Genres</h3>
 				<a href="/admin/genres/create" class="btn btn-primary btn-sm float-right">Create</a>
 			</div>
 

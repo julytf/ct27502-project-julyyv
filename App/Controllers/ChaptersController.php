@@ -33,11 +33,13 @@ class ChaptersController
     public static function getOne($chapter_id)
     {
         $chapter = Chapter::find($chapter_id);
+        $comic = Comic::find($chapter->comic_id);
         $images = $chapter->images;
 
         return view(
             "admin/chapters/detail",
             [
+                "comic" => $comic,
                 "chapter" => $chapter,
                 "images" => $images,
             ],
@@ -109,11 +111,13 @@ class ChaptersController
     public static function updateView($comic_id, $chapter_id)
     {
         $chapter = Chapter::find($chapter_id);
+        $comic = Comic::find($chapter->comic_id);
         $images = $chapter->images;
 
         return view(
             "admin/chapters/update",
             [
+                "comic" => $comic,
                 "chapter" => $chapter,
                 "images" => $images,
             ],

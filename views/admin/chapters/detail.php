@@ -3,7 +3,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Detail Chapter</h3>
-                <a href="/admin/chapters/<?php echo $chapter->id ?>" class="btn btn-primary btn-sm float-right">Detail</a>
+                <a href="/admin/comics/<?php echo $comic->id ?>/chapters/<?php echo $chapter->id ?>/edit" class="btn btn-primary btn-sm float-right">Edit</a>
             </div>
             <form method="post" enctype="multipart/form-data" style="margin-bottom: 0;">
                 <div class="card-body">
