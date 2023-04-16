@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h3 class="card-title">Create Comic</h3>
             </div>
-            <form style="margin-bottom: 0;">
+            <form method="post"  enctype="multipart/form-data" style="margin-bottom: 0;">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label>Cover Image</label>
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg">
+                            <input name="cover_image" type="file" class="form-control" accept="image/png, image/gif, image/jpeg">
                         </div>
                     </div>
                     <div class="form-group">

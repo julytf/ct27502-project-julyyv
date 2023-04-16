@@ -30,19 +30,40 @@ class ComicsController
     }
     public static function adminIndex()
     {
-        $data = Comic::get();
+        $perPage = $_GET['perPage'] ?? 24;
+        $q = $_GET['q'] ?? '';
+
+        $query = Comic::where('name', 'like', '%' . $q . '%')->orderBy('id', 'desc');
+
+        $count  = $query->count();
+        $no_page = ceil($count / $perPage);
+
+        $page = $_GET['page'] ?? 1;
+        if ($page < 1) $page = 1;
+        if ($page > $no_page) $page = $no_page;
+
+        $skip = ($page - 1) * $perPage;
+
+        $comics = $query->skip($skip)->take($perPage)->get();
+
+
         return view(
-            "admin/comics/index",
+            'admin/comics',
             [
-                "comics" => $data,
+                'comics' => $comics,
+                'page' => $page,
+                'no_page' => $no_page,
+                'perPage' => $perPage,
+                'q' => $q,
             ],
-            "admin", // layout
+            'admin'
         );
     }
-    
+
     public static function getOne($comic_id)
     {
         $comic = Comic::find($comic_id);
+        $chapters = $comic->chapters;
         $genres = Genre::get();
         $comic_genre_arr = $comic->genres()->get();
         return view(
@@ -50,6 +71,7 @@ class ComicsController
             [
                 "comic" => $comic,
                 "genres" => $genres,
+                "chapters" => $chapters,
                 "comic_genre_arr" => $comic_genre_arr,
             ],
             "admin", // layout
@@ -79,26 +101,26 @@ class ComicsController
 
         // foreach ($genres as $genre){
         //     if($genre){
-                
+
         //     }
         // }
 
-        if(!$name){
+        if (!$name) {
             flash_message()->create("Name khong duoc bo trong", "error");
             return redirect('/admin/comics');
         }
 
-        if($cover_image['name'] != ''){
+        if ($cover_image['name'] != '') {
 
             $folder = '../public/img/';
-            $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+            $cover_image_name = 'cover_image_' . rand(100000000, 999999999);
             $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
 
-            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext;
 
-            while(file_exists($path_file_cover_image)){
-                $cover_image_name = 'cover_image_' . rand(100000000,999999999);
-                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            while (file_exists($path_file_cover_image)) {
+                $cover_image_name = 'cover_image_' . rand(100000000, 999999999);
+                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext;
             }
 
             $path_store_cover_image = $cover_image_name . '.' . $ext;
@@ -150,30 +172,30 @@ class ComicsController
 
         $comic = Comic::find($id);
 
-        if( $cover_image['name'] == '' ){
+        if ($cover_image['name'] == '') {
             $comic->fill([
                 'name' => $name,
                 'description' => $description,
                 'status' => $status,
                 'author' => $author,
             ]);
-            
+
             $comic->save();
             $comic->genres()->detach();
             $comic->genres()->attach($genres);
-            return redirect('/admin/comics/'.$comic->id);
-        }else{
+            return redirect('/admin/comics/' . $comic->id);
+        } else {
             unlink("img/" . $comic->cover_image);
 
             $folder = '../public/img/';
-            $cover_image_name = 'cover_image_' . rand(100000000,999999999);
+            $cover_image_name = 'cover_image_' . rand(100000000, 999999999);
             $ext = pathinfo($cover_image['name'], PATHINFO_EXTENSION);
 
-            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            $path_file_cover_image = $folder . $cover_image_name . '.' . $ext;
 
-            while(file_exists($path_file_cover_image)){
-                $cover_image_name = 'cover_image_' . rand(100000000,999999999);
-                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext ;
+            while (file_exists($path_file_cover_image)) {
+                $cover_image_name = 'cover_image_' . rand(100000000, 999999999);
+                $path_file_cover_image = $folder . $cover_image_name . '.' . $ext;
             }
 
             $path_store_cover_image = $cover_image_name . '.' . $ext;
@@ -192,7 +214,7 @@ class ComicsController
             $comic->genres()->detach();
             $comic->genres()->attach($genres);
 
-            return redirect('/admin/comics/'.$comic->id);
+            return redirect('/admin/comics/' . $comic->id);
         }
     }
     public static function delete($comic_id)
@@ -200,10 +222,10 @@ class ComicsController
         $comic = Comic::find($comic_id);
         $chapters = $comic->chapters()->get();
         $comic->genres()->detach();
-        if($chapters){
+        if ($chapters) {
             foreach ($chapters as $chapter) {
                 $images = $chapter->images()->get();
-                if($images){
+                if ($images) {
                     foreach ($images as $image) {
                         $image->delete_image();
                     }

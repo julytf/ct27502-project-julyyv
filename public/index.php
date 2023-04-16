@@ -4,7 +4,7 @@ namespace Index;
 
 require_once '../vendor/autoload.php';
 
-require_once '../Helpers/helpers.php'; 
+require_once '../Helpers/helpers.php';
 
 use App\Controllers\AssetsController;
 use Dotenv\Dotenv;
@@ -18,13 +18,15 @@ use Bramus\Router\Router;
 
 // test
 
-$dotenv = Dotenv::createImmutable(__DIR__.'/..');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
 
-if($_SERVER['REQUEST_METHOD'] === "POST") {
-    // echo $_POST["_method"];
-    $_SERVER['REQUEST_METHOD'] = $_POST["_method"] ?? $_SERVER['REQUEST_METHOD'];
+if (
+    $_SERVER['REQUEST_METHOD'] === "POST" &&
+    in_array($_POST["_method"], ['POST', 'PUT', 'PATCH', 'DELETE'])
+) {
+    $_SERVER['REQUEST_METHOD'] =  $_POST["_method"];
 }
 
 require_once("../DB/connection.php");
@@ -44,9 +46,10 @@ require_once('../routes/ApiRoutes.php');
 
 // 404
 $router->set404(function () {
-// TODO:
+    // TODO:
     // header('HTTP/1.1 404 Not Found');
     echo "404 roi huhu";
+    echo $_SERVER['REQUEST_METHOD'];
 });
 
 $router->run();

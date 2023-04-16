@@ -70,11 +70,11 @@ $router->mount('/admin', function () use ($router) {
                     ComicsController::update(...)
                 );
             });
+            $router->DELETE(
+                "/delete",
+                ComicsController::delete(...)
+            );
             $router->mount("/chapters", function () use ($router) {
-                $router->GET(
-                    "/",
-                    ChaptersController::adminIndex(...)
-                );
                 $router->mount('/create', function () use ($router) {
                     $router->GET(
                         "/",
@@ -107,10 +107,6 @@ $router->mount('/admin', function () use ($router) {
                     );
                 });
             });
-            $router->DELETE(
-                "/delete",
-                ComicsController::delete(...)
-            );
         });
         $router->mount('/create', function () use ($router) {
             $router->GET(

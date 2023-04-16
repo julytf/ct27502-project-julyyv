@@ -17,7 +17,7 @@
                     </li>
                 </ol>
                 <div class="book_info">
-                    <div class="book_avatar"><img itemprop="image" alt="<?php echo $comic->name ?>" src="<?php echo $comic->cover_image ?>"></div>
+                    <div class="book_avatar"><img itemprop="image" alt="<?php echo $comic->name ?>" src="/img/<?php echo $comic->cover_image ?>"></div>
                     <div class="book_other">
                         <h1 itemprop="name"><?php echo $comic->name ?></h1>
                         <div class="txt">

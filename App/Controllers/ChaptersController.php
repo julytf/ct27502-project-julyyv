@@ -30,21 +30,19 @@ class ChaptersController
             "main", // layout
         );
     }
-    public static function adminIndex($comic_id)
+    public static function getOne($chapter_id)
     {
-        $data = Comic::find($comic_id)->chapters()->get() ?? [];
+        $chapter = Chapter::find($chapter_id);
+        $images = $chapter->images;
+
         return view(
-            "admin/chapters/index",
+            "admin/chapters/detail",
             [
-                "chapters" => $data, 'comic_id' => $comic_id
+                "chapter" => $chapter,
+                "images" => $images,
             ],
             "admin", // layout
         );
-    }
-    public static function getOne()
-    {
-        echo 'hello';
-        echo "TODO:";
     }
     public static function createView($comic_id)
     {
@@ -63,7 +61,7 @@ class ChaptersController
         $index_chapter = $_POST["index_chapter"];
 
         if ($index_chapter == '' || findObjectByIndex($index_chapter, $chapters) !== false) {
-            return redirect("/admin/comics/" . $comic_id . "/chapters");
+            return redirect("/admin/comics/" . $comic_id );
         }
         $chapter = new Chapter();
         $chapter->fill([
@@ -99,16 +97,18 @@ class ChaptersController
             }
         }
 
-        return redirect("/admin/comics/" . $comic_id . "/chapters");
+        return redirect("/admin/comics/" . $comic_id);
     }
     public static function updateView($comic_id, $chapter_id)
     {
         $chapter = Chapter::find($chapter_id);
+        $images = $chapter->images;
 
         return view(
             "admin/chapters/update",
             [
                 "chapter" => $chapter,
+                "images" => $images,
             ],
             "admin", // layout
         );

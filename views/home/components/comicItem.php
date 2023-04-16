@@ -1,7 +1,7 @@
 <li>
     <a href="<?php echo $comic->id ?>">
         <div class="book_avatar">
-            <img class="center" src="<?php echo $comic->cover_image ?>" alt="Ta Ở Nhà 100 Năm Khi Ra Ngoài Đã Vô Địch" />
+            <img class="center" src="/img/<?php echo $comic->cover_image ?>" alt="Ta Ở Nhà 100 Năm Khi Ra Ngoài Đã Vô Địch" />
         </div>
     </a>
     <div class="book_info">
