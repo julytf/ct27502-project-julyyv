@@ -18,7 +18,7 @@
     <?php //require_once "components/header.php"; ?>
 
     <?php require 'components/sidebar.php' ?>
-    <div class="content-wrapper" >
+    <div class="content-wrapper" style="min-height: 100%;">
       <?php require_once "components/flash_messages.php"; ?>
 
       <?php require_once $body; ?>
