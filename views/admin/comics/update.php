@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" name="description" value="<?php echo $comic['description'] ?>">
+                        <textarea type="text" class="form-control" name="description"><?php echo $comic['description'] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Cover Image</label>

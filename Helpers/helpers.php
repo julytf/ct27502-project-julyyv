@@ -129,5 +129,5 @@ function findObjectByIndex($index,$array){
 
 function truncate($string, $length, $dots = "...") {
     if(gettype($string) != 'string') return '';
-    return (strlen($string) > $length) ? substr($string, 0, $length - strlen($dots)) . $dots : $string;
+    return (strlen($string) > $length) ? mb_substr($string, 0, $length - strlen($dots)) . $dots : $string;
 }
