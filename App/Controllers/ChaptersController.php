@@ -80,16 +80,23 @@ class ChaptersController
 
             //Get the temp file path
             $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+            $file_name = rand(100000000, 999999999);
 
             //Make sure we have a file path
             if ($tmpFilePath != "") {
                 //Setup our new file path
-                $path_file_image = $folder . $_FILES['upload']['name'][$i];
+                $ext = pathinfo($_FILES['upload']['name'][$i], PATHINFO_EXTENSION);
+                $path_file_image = $folder . $file_name . '.' . $ext;
+                while (file_exists($path_file_image)) {
+                    $file_name = rand(100000000, 999999999);
+                    $path_file_image = $folder . $file_name . '.' . $ext;
+                }
+                $store = $file_name . '.' . $ext;
                 move_uploaded_file($tmpFilePath, $path_file_image);
 
                 $image = new Image();
                 $image->fill([
-                    "file" => $_FILES['upload']['name'][$i],
+                    "file" => $store,
                     "index_image" => $i,
                     "chapter_id" => $chapter->id
                 ]);
@@ -153,16 +160,23 @@ class ChaptersController
 
             //Get the temp file path
             $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+            $file_name = rand(100000000, 999999999);
 
             //Make sure we have a file path
             if ($tmpFilePath != "") {
                 //Setup our new file path
-                $path_file_image = $folder . $_FILES['upload']['name'][$i];
+                $ext = pathinfo($_FILES['upload']['name'][$i], PATHINFO_EXTENSION);
+                $path_file_image = $folder . $file_name . '.' . $ext;
+                while (file_exists($path_file_image)) {
+                    $file_name = rand(100000000, 999999999);
+                    $path_file_image = $folder . $file_name . '.' . $ext;
+                }
+                $store = $file_name . '.' . $ext;
                 move_uploaded_file($tmpFilePath, $path_file_image);
 
                 $image = new Image();
                 $image->fill([
-                    "file" => $_FILES['upload']['name'][$i],
+                    "file" => $store,
                     "index_image" => $i,
                     "chapter_id" => $chapter->id
                 ]);
