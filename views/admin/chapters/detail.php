@@ -22,9 +22,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary float-right">Update</button>
-                </div>
             </form>
         </div>
     </div>
