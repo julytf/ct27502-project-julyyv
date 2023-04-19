@@ -9,9 +9,13 @@ use App\Controllers\AuthController;
 use App\Controllers\AdminController;
 use App\Controllers\ChaptersController;
 use App\Controllers\GenresController;
+use App\Models\Genre;
 
-$router->get('/test', function() {
-    return view('comics/details', [], 'main');
+$router->get('/test', function () {
+    $genre = Genre::find(1);
+    echo json_encode($genre);
+    // echo json_encode($genre->comics()->get());
+    $genre->comics()->detach();
 });
 
 $router->GET(
@@ -143,7 +147,6 @@ $router->mount('/admin', function () use ($router) {
                 "/delete",
                 GenresController::delete(...)
             );
-
         });
         $router->mount('/create', function () use ($router) {
             $router->GET(

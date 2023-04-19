@@ -36,7 +36,7 @@
 					<tbody>
 
 						<?php foreach ($comics as $comic) : ?>
-							<tr onclick="handleClick(<?php echo $comic->id ?>)">
+							<tr onclick="handleClick(<?php echo $comic->id ?>)" role="button">
 								<td><?php echo $comic->id ?></td>
 								<td class="text-wrap" style="max-width: 200px;"><?php echo truncate($comic->name, 160) ?></td>
 								<td class="text-wrap" style="max-width: 200px;"><?php echo truncate($comic->description, 160) ?></td>

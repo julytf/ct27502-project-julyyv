@@ -114,13 +114,14 @@ class GenresController
     public static function delete($genre_id)
     {
         $genre = Genre::find($genre_id);
-        $comic_genre_arr = $genre->comics()->get();
-        if($comic_genre_arr){
-            foreach ($comic_genre_arr as $comic_genre) {
-                // die($comic_genre->pivot);
-                $comic_genre->pivot->delete();
-            }
-        }
+        $genre->comics()->detach();
+        // $comic_genre_arr = $genre->comics()->get();
+        // if($comic_genre_arr){
+        //     foreach ($comic_genre_arr as $comic_genre) {
+        //         // die($comic_genre->pivot);
+        //         $comic_genre->pivot->delete();
+        //     }
+        // }
         $genre->delete();
         return redirect('/admin/genres');
     }

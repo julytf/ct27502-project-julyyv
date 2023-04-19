@@ -15,6 +15,6 @@ class Genre extends Model
     ];
     public $timestamps = false;
     public function comics(){
-        return $this->belongsToMany(Comic::class,'comic_genre','comic_id','genre_id');
+        return $this->belongsToMany(Comic::class,'comic_genre','genre_id','comic_id');
     }
 }

@@ -21,7 +21,7 @@
 
 
 						<?php foreach ($genres as $genre) : ?>
-							<tr onclick="handleClick(<?php echo $genre->id ?>)">
+							<tr onclick="handleClick(<?php echo $genre->id ?>)" role="button">
 								<td><?php echo $genre['id'] ?></td>
 								<td><?php echo $genre['name'] ?></td>
 								<td><?php echo $genre['description'] ?></td>

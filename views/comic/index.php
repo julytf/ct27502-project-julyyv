@@ -2,7 +2,7 @@
     <div class="book_detail">
         <ol class="breadcrumb">
             <li>
-                <a itemprop="item">
+                <a href="/" itemprop="item">
                     <span itemprop="name">Trang Chủ</span>
                 </a>
                 <meta itemprop="position" content="1">

@@ -87,7 +87,7 @@
 
 
                         <?php foreach ($chapters as $key => $chapter) : ?>
-                            <tr onclick="handleClick(<?php echo $chapter['id'] ?>)">
+                            <tr onclick="handleClick(<?php echo $chapter['id'] ?>)" role="button">
                                 <td><?php echo $chapter['id'] ?></td>
                                 <td><?php echo $chapter['index_chapter'] ?></td>
                                 <td><?php echo $chapter['name'] ?></td>
