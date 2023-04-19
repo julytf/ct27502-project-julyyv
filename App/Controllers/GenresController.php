@@ -97,7 +97,7 @@ class GenresController
         $id = $_POST["id"];
         $name = $_POST["name"];
         $description = $_POST["description"];
-        if($name == '' || $description == '' ){
+        if($name == '' ){
             return redirect("/admin/genres/".$genre_id);
         }
         $genre = Genre::find($genre_id);
