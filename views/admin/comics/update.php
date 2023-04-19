@@ -36,10 +36,6 @@
                         <input type="text" class="form-control" name="author" value="<?php echo $comic['author'] ?>">
                     </div>
                     <div class="form-group">
-                        <label>Publisher</label>
-                        <input type="text" class="form-control" name="publisher" value="<?php echo $comic['publisher'] ?>">
-                    </div>
-                    <div class="form-group">
                         <label>Genres</label>
                         <div class="row">
 

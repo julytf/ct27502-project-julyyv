@@ -33,10 +33,6 @@
                         <input type="text" class="form-control" name="author">
                     </div>
                     <div class="form-group">
-                        <label>Publisher</label>
-                        <input type="text" class="form-control" name="publisher">
-                    </div>
-                    <div class="form-group">
                         <label>Genres</label>
                         <div class="row">
 
