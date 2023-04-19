@@ -14,7 +14,7 @@ class HomeController
         $perPage = $_GET['perPage'] ?? 24;
         $q = $_GET['q'] ?? '';
 
-        $query = Comic::where('name', 'like', '%' . $q . '%');
+        $query = Comic::where('name', 'like', '%' . $q . '%')->orderBy('id', 'desc');
 
         $count  = $query->count();
         $no_page = ceil($count / $perPage);
