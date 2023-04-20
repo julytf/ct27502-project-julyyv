@@ -29,7 +29,7 @@
                 </div>
                 <div class="chapter-control">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if (!$previous_chapter_id) echo 'd-none' ?>"><em class="fa fa-arrow-left"></em> Chap trước</a>
+                        <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if (!$previous_chapter_id) echo 'd-none'  ?>"><em class="fa fa-arrow-left"></em> Chap trước</a>
                         <a href="/<?php echo $comic->id ?>/<?php echo $next_chapter_id ?>" class="btn btn-info go-btn next text-white m-1 <?php if (!$next_chapter_id) echo 'd-none' ?>">Chap sau <em class="fa fa-arrow-right"></em></a>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="box bottom-chap">
                 <div class="chapter-control">
                     <div class="d-flex align-items-center justify-content-center">
-                        <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if (!$previous_chapter_id) echo 'd-none' ?>"><em class="fa fa-arrow-left"></em> Chap trước</a>
+                        <a href="/<?php echo $comic->id ?>/<?php echo $previous_chapter_id ?>" class="btn btn-info go-btn prev text-white m-1 <?php if (!$previous_chapter_id) echo 'd-none'  ?>"><em class="fa fa-arrow-left"></em> Chap trước</a>
                         <a href="/<?php echo $comic->id ?>/<?php echo $next_chapter_id ?>" class="btn btn-info go-btn next text-white m-1 <?php if (!$next_chapter_id) echo 'd-none' ?>">Chap sau <em class="fa fa-arrow-right"></em></a>
                     </div>
                 </div>

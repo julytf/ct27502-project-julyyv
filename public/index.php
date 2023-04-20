@@ -42,7 +42,7 @@ $router->get("/(img|css|js|font)(/.*)?", AssetsController::get(...));
 require_once('../routes/WebRoutes.php');
 
 // api routes
-require_once('../routes/ApiRoutes.php');
+// require_once('../routes/ApiRoutes.php');
 
 // 404
 $router->set404(function () {
