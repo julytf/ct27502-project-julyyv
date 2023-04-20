@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        <select class="form-control">
+                        <select name="status" class="form-control">
                             <option value="Sắp phát hành">Sắp phát hành</option>
                             <option selected value="Đang cập nhật">Đang cập nhật</option>
                             <option value="Hoàn Thành">Hoàn Thành</option>

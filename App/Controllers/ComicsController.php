@@ -165,26 +165,21 @@ class ComicsController
         $id = $_POST["id"];
         $name = $_POST["name"];
         $description = $_POST["description"] ? $_POST["description"] : null;
-        $cover_image = $_FILES["cover_image"];
+        $cover_image = $_FILES["cover_image"] ?? null;
         $status = $_POST["status"] ? $_POST["status"] : null;
         $author = $_POST["author"] ? $_POST["author"] : null;
         $genres = $_POST["genre"];
+        // die($_FILES["cover_image"]);
 
         $comic = Comic::find($id);
 
-        if ($cover_image['name'] == '') {
-            $comic->fill([
-                'name' => $name,
-                'description' => $description,
-                'status' => $status,
-                'author' => $author,
-            ]);
-
-            $comic->save();
-            $comic->genres()->detach();
-            $comic->genres()->attach($genres);
-            return redirect('/admin/comics/' . $comic->id);
-        } else {
+        $comic->fill([
+            'name' => $name,
+            'description' => $description,
+            'status' => $status,
+            'author' => $author,
+        ]);
+        if ($cover_image['name'] != null) {
             unlink("img/" . $comic->cover_image);
 
             $folder = '../public/img/';
@@ -202,20 +197,18 @@ class ComicsController
             move_uploaded_file($cover_image["tmp_name"], $path_file_cover_image);
 
             $comic->fill([
-                'name' => $name,
-                'description' => $description,
                 'cover_image' => $path_store_cover_image,
-                'status' => $status,
-                'author' => $author,
             ]);
-
-            $comic->save();
-
-            $comic->genres()->detach();
-            $comic->genres()->attach($genres);
-
-            return redirect('/admin/comics/' . $comic->id);
+            echo 'image: ' . $path_store_cover_image;
+            // die();
         }
+
+        $comic->save();
+
+        $comic->genres()->detach();
+        $comic->genres()->attach($genres);
+
+        return redirect('/admin/comics/' . $comic->id);
     }
     public static function delete($comic_id)
     {

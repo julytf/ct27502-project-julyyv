@@ -22,15 +22,15 @@
                     <div class="form-group">
                         <label>Cover Image</label>
                         <div class="input-group mb-3">
-                            <input readonly type="file" class="form-control" accept="image/png, image/gif, image/jpeg">
+                            <input readonly disabled type="file" class="form-control" accept="image/png, image/gif, image/jpeg">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Status</label>
                         <select readonly class="form-control">
-                            <option value="Sắp phát hành">Sắp phát hành</option>
-                            <option selected value="Đang cập nhật">Đang cập nhật</option>
-                            <option value="Hoàn Thành">Hoàn Thành</option>
+                            <option <?php if($comic->status == "Sắp phát hành") echo 'selected'; ?> value="Sắp phát hành">Sắp phát hành</option>
+                            <option <?php if($comic->status == "Đang cập nhật") echo 'selected'; ?> value="Đang cập nhật">Đang cập nhật</option>
+                            <option <?php if($comic->status == "Hoàn Thành") echo 'selected'; ?> value="Hoàn Thành">Hoàn Thành</option>
                         </select>
                     </div>
                     <div class="form-group">
