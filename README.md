@@ -6,15 +6,10 @@ Học kỳ 2, Năm học 2022-2023
 
 **Họ tên SV 1**: Lâm Chấn Vũ
 
-**MSSV 2**:
+**MSSV 2**: B2014621
 
-**Họ tên SV 2**:
+**Họ tên SV 2**: Lê Văn Tính
 
-**Lớp học phần**:
+**Lớp học phần**: CT27502
 
-**Tên dự án**:
-
-
-
-
-*** add new autoload => run: composer dump-autoload 
+**Tên dự án**: Xây dựng trang web đọc truyện tranh
