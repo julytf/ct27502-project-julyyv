@@ -14,6 +14,9 @@ Học kỳ 2, Năm học 2022-2023
 
 **Tên dự án**: Xây dựng trang web đọc truyện tranh
 
+## Cơ sở dữ liệu
+![alt text](./docs/images/image6.png)
+
 
 ## Preview Images
 
